@@ -37,7 +37,9 @@ public class CentralController extends HttpServlet {
             String Admin_Page = "adminPage.jsp";
             String Cart_Page = "cartPage.jsp";
             String History_Page = "historyPage.jsp";
+            String Shipper_Page = "shipperPage.jsp";
             String Error_Page = "errorPage.jsp";
+            
             /* TODO output your page here. You may use following sample code. */
             String action = request.getParameter("action");
             switch (action) {
