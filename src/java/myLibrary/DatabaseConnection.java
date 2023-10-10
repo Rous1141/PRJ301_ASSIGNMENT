@@ -4,10 +4,28 @@
  */
 package myLibrary;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 /**
  *
  * @author hendrix
  */
 public class DatabaseConnection {
-    
+    public static Connection makeConnection() throws Exception{
+        Connection cn=null;
+        String IP="10.211.55.2";
+        String instanceName="sql1";
+        String port="1433";
+        String uid="sa";
+        String pwd="12345";
+        String db="flower_shop";
+        String 
+driver="com.microsoft.sqlserver.jdbc.SQLServerDriver";
+        String url="jdbc:sqlserver://" +IP+"\\"+ instanceName+":"+port
+                 +";databasename="+db+";user="+uid+";password="+pwd;
+        Class.forName(driver);
+        cn=DriverManager.getConnection(url);
+        return cn;
+}
 }
