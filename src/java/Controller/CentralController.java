@@ -49,6 +49,7 @@ public class CentralController extends HttpServlet {
                 case "cart":{request.getRequestDispatcher(Cart_Page).forward(request, response);break;}
                 case "history":{request.getRequestDispatcher(History_Page).forward(request, response);break;}
                 case "admin":{request.getRequestDispatcher(Admin_Page).forward(request, response);break;}
+                case "shipper":{request.getRequestDispatcher(Shipper_Page).forward(request, response);break;}
                 case "error":request.getRequestDispatcher(Error_Page).forward(request, response);{break;}
                     
                     
