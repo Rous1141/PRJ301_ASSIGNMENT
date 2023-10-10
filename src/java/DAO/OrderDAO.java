@@ -8,6 +8,6 @@ package DAO;
  *
  * @author hendrix
  */
-public class DAO {
+public class OrderDAO {
     
 }
