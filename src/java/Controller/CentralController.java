@@ -43,9 +43,9 @@ public class CentralController extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String action = request.getParameter("action");
             switch (action) {
-                case "welcome":{request.getRequestDispatcher(Shop_Page).forward(request, response);break;}
-                case "signup":{request.getRequestDispatcher(SignIn_Page).forward(request, response);break;}
-                case "login":{request.getRequestDispatcher(LogIn_Page).forward(request, response);break;}
+                case "welcome":{request.getRequestDispatcher(LogIn_Page).forward(request, response);break;}
+                case "shop":{request.getRequestDispatcher(Shop_Page).forward(request, response);break;}
+                case "signin":{request.getRequestDispatcher(SignIn_Page).forward(request, response);break;}
                 case "cart":{request.getRequestDispatcher(Cart_Page).forward(request, response);break;}
                 case "history":{request.getRequestDispatcher(History_Page).forward(request, response);break;}
                 case "admin":{request.getRequestDispatcher(Admin_Page).forward(request, response);break;}
