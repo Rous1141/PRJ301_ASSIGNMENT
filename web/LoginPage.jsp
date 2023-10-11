@@ -9,12 +9,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="CSS/LoginCSS.css">
+        <link href="css/LoginCSS.css" rel="stylesheet" type="text/css"/>
         <script src="https://kit.fontawesome.com/c9f5871d83.js" crossorigin="anonymous"></script>
         <title>Login Flower Store</title>
     </head>
     <body>
+        
         <header class="header">
+             <h2 style="display: inline">Store Buy Flower</h2>
             <nav class="navi">
                 <a href="#">Home</a>
                 <a href="#">About</a>
@@ -25,13 +27,13 @@
                 <input type="text" placeholder="Search ...">
                 <a><i class="fa-solid fa-magnifying-glass"></i></a>
             </div>
+            
         </header>
         <div class="background"></div>
         <section class="home">
             <div class="content">
-                <a href="#" class="Logo_Login">Flower Store</a>
-                <h2>Welcome !</h2>
-                <h3>Store Buy Flower</h3>
+                
+                
                 <pre>Flowers can bring people happiness and heal all mental and physical wounds.</pre>
                 <div class="icon">
                     <i class="fa-brands fa-instagram"></i>
@@ -42,7 +44,7 @@
 
             </div>
             <div class="Login">
-                <h2>Sign In</h2>
+                <div class="form">
                 <form action="">
                     <div class="input">
                         <input type="text" class="input1" placeholder="Email" required>
@@ -61,11 +63,12 @@
                     </div>
                 </form>
                 <div class="Regsiter">
-                    <p>Don't have an account?</p>
-                    <a href="#">Sign Up</a>
+                    <p>Don't have an account?  <a href="#">Sign Up</a></p>
+                   
                 </div>
-
+                    </div>
             </div>
         </section>
+           
     </body>
 </html>
