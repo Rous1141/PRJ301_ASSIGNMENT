@@ -8,10 +8,16 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+       
+         
+        <title>Shopping</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Shop Page</h1>
+        
+        
+        <%@include file="../Components/footer.jsp" %> 
     </body>
 </html>

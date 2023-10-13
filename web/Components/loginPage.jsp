@@ -8,8 +8,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
         <link href="css/LoginCSS.css" rel="stylesheet" type="text/css"/>
+
         <script src="https://kit.fontawesome.com/c9f5871d83.js" crossorigin="anonymous"></script>
+        
         <title>Login Flower Store</title>
     </head>
     <body>
@@ -68,6 +71,5 @@
                     </div>
             </div>
         </section>
-           
     </body>
 </html>

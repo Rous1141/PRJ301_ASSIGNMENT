@@ -32,7 +32,7 @@ public class CentralController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String SignIn_Page = "Customer/signupPage.jsp";
-            String LogIn_Page = "Components/loginPage.jsp";
+            String LogIn_Page = "/Components/loginPage.jsp";
             String Shop_Page = "Customer/shopPage.jsp";
             String Admin_Page = "Admin/adminPage.jsp";
             String Cart_Page = "Customer/cartPage.jsp";
@@ -44,6 +44,7 @@ public class CentralController extends HttpServlet {
             
             /* TODO output your page here. You may use following sample code. */
             String action = request.getParameter("action");
+            if(action == null){action="welcome";}
             switch (action) {
                 case "welcome":{request.getRequestDispatcher(LogIn_Page).forward(request, response);break;}
                 case "shop":{request.getRequestDispatcher(Shop_Page).forward(request, response);break;}
