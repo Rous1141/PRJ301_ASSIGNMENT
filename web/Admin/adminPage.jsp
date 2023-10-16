@@ -57,8 +57,6 @@
 
                     </ul>
                 </form>
-
-
                 <%
                     String adPage = request.getParameter("page");
                     if (adPage == null) {
@@ -89,8 +87,6 @@
                     }
 
                 %>
-
-
             </div>
         </div>    
 
