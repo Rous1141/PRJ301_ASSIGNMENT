@@ -18,7 +18,7 @@
     <body>
         
         <header class="header">
-             <h2 style="display: inline">Store Buy Flower</h2>
+            
             <nav class="navi">
                 <a href="#">Home</a>
                 <a href="#">About</a>
@@ -34,9 +34,10 @@
         <div class="background"></div>
         <section class="home">
             <div class="content">
-                
-                
-                <pre>Flowers can bring people happiness and heal all mental and physical wounds.</pre>
+                <a href="#" class="Logo_Login">Flower Store</a>
+            <h2>Welcome !</h2>
+            <h3>Store Buy Flower</h3>
+            <pre>Flowers can bring people happiness and heal all mental and physical wounds.</pre>
                 <div class="icon">
                     <i class="fa-brands fa-instagram"></i>
                     <i class="fa-brands fa-facebook"></i>
