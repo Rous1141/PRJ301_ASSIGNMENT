@@ -1,6 +1,6 @@
 <%-- 
-    Document   : shopPage
-    Created on : Oct 9, 2023, 8:39:39 PM
+    Document   : crud
+    Created on : Oct 12, 2023, 3:12:41 PM
     Author     : hendrix
 --%>
 
@@ -8,16 +8,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-       
-         
-        <title>Shopping</title>
+
+        
+        <title>Dashboard</title>
     </head>
     <body>
-        <h1>Shop Page</h1>
-        
-        
-        <%@include file="../Components/footer.jsp" %> 
+        <div class="myDashboard col s8 offset-s1">
+            <h1>Select An Action To Begin</h1>
+            
+        </div>
     </body>
 </html>

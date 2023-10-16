@@ -25,33 +25,18 @@ and open the template in the editor.
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 10px;
+    padding: 20px 100px;
     z-index: 99;
-    background: ghostwhite;
-    
-}
-
-.header .navi{
-    position: relative;
-    left: 20%;
+    background: transparent;
 }
 
 .header .navi a{
     position: relative;
     text-decoration: none;
-    color: black;
+    color: #fff;
     font-size: 17px;
-    font-weight: 600;
-    margin-left: 10px;
-   
-}
-
-.header h2{
-    position: relative;
-    text-decoration: none;
-    color: black;
     margin-left: 20px;
-    
+    font-weight: 600;
 }
 
  .header .navi a::after{
@@ -61,7 +46,7 @@ and open the template in the editor.
     bottom: -6px;
     width: 100%;
     height: 3px;
-    background: black;
+    background: #fff;
     border-radius: 6px;
     transform-origin: right ;
     transform: scaleX(0);
@@ -77,42 +62,43 @@ and open the template in the editor.
     background: transparent;
     font-size: 20px;
     border-radius: 5px;
-    border: 2px solid black;
+    border: 2px solid white;
+    padding-left: 10px;
+    right: 100px;
     outline: none;
-    color: black;
+    color: #fff;
 }
 
 .header .search i{
     position: absolute;
-    right: 20px;
-    top: 20px;
-    color: black;
+    right: 110px;
+    top: 22px;
+    color: #fff;
 }
 
 .background{
     width: 100%;
     height: 100vh;
-   background-image: url('https://gamepress.gg/lostword/sites/lostword/files/story_cards/0074_☆3_Garden%20of%20the%20Sun.png');
+    background-image: url('https://images.pexels.com/photos/7778287/pexels-photo-7778287.jpeg');
     background-position: center;
     background-size: cover;
-    filter: blur(5px);
- 
+
 }
 .home{
-    
     position: absolute;
     top: 50%;
     left: 50%;
     width: 75%;
     height: 75%;
     transform: translate(-50% , -50%);
-    background-image: url('https://gamepress.gg/lostword/sites/lostword/files/story_cards/0074_☆3_Garden%20of%20the%20Sun.png');
+    background-image: url('https://images.pexels.com/photos/7778287/pexels-photo-7778287.jpeg');
+    background-position: center;
+    background-size: cover;
     display: flex;
     margin-top: 10px;
     border: 1px solid black;
     border-radius: 10px;
     border: none;
-    
 }
 
 .content{
@@ -126,7 +112,7 @@ and open the template in the editor.
 .content a{
     position: relative;
     text-decoration: none;
-    color: black;
+    color: #fff;
     font-size: 3em;
     font-weight: 700;
     top: -40px;
@@ -136,20 +122,19 @@ and open the template in the editor.
 .content h2{
     font-size: 3.5em;
     text-align: center;
-    color: black;
+    color: #fff;
 
 }
 .content h3{
     font-size: 2.5em;
     text-align: center;
-    color: black;
+    color: #fff;
 }
 .content pre{
-    margin-top: 32%;
+    margin-top: 20px;
     text-align: center;
     font-size: 1em;
-    color: black;
-    font-style: italic;
+    color: #fff;
 }
 
 .content .icon{
@@ -160,19 +145,20 @@ and open the template in the editor.
 }
 
 .content .icon i{
-    margin: 20px;
-    color: black;
+    margin: 10px ;
+    color: #fff;
 }
 .Login{
     width: 450px;
     position: relative;
     padding: 100px 30px;
-    backdrop-filter: blur(10px);
-    
+    backdrop-filter: blur(20px);
 }
-
-.form{
-    margin-top: 10%;
+.Login h2{
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff;
 }
 
 .Login .input{
@@ -191,34 +177,34 @@ and open the template in the editor.
     background: transparent;
     border: none;
     outline: none;
-    border-bottom: 2px solid black;
-    color: black;
+    border-bottom: 2px solid #fff;
+    color: #fff;
     width: 100%;
     height: 100%;
 }
 
 ::placeholder{
-    color: black;
+    color: #fff;
     font-size: 18px;
 }
 
 .Login .input i{
     position: relative;
-    right: -90%;
+    right: -370px;
     bottom: 27px;
-    color: black;
+    color: #fff;
 }
 
 .check{
     display: flex;
     justify-content: space-between;
     margin-bottom: 40px;
-    color: black;
+    color: #fff;
 }
 
 .check a{
     text-decoration: none;
-    color: black;
+    color: #fff;
 }
 
 .check a:hover{
@@ -235,22 +221,24 @@ and open the template in the editor.
 
 
 button{
-    margin-left: 25%;
-    justify-self: center;
-    font-size: 2em;
-    text-align: center;
-    margin-bottom: 20px;
-    color: black;
-    background: ghostwhite;
-    width: 50%;
-    text-align: center;
-    border-radius: 20px;
+    width: 100%;
+    height: 40px;
+    background-color: crimson;
+    outline: none;
+    border: none;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    background: transparent;
+    border: 1px solid #fff;
+    outline: none;
+    border-radius:3px;
+    cursor: pointer;
     transition: .3s;
 }
 
 button:hover{
     background-color: rgb(48, 120, 69);
-    color: white;
 }
 
 .button:active{
@@ -265,12 +253,12 @@ button:hover{
 
 .Login .Regsiter a{
     text-decoration: none;
-    color: black;
+    color: #fff;
     font-weight: 700;
 }
 
 .Login .Regsiter p{
-    color: black;
+    color: #fff;
 
 }
 
