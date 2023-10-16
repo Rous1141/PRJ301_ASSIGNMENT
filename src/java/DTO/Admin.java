@@ -8,6 +8,6 @@ package DTO;
  *
  * @author hendrix
  */
-public class Users {
+public class Admin {
     
 }
