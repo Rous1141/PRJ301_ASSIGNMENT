@@ -48,7 +48,7 @@
             </div>
             <div class="Login">
                 <div class="form">
-                <form action="">
+                    <form action="LoginPage" method="post">
                     <div class="input">
                         <input type="text" class="input1" placeholder="Email" required>
                         <i class="fa-solid fa-envelope"></i>
