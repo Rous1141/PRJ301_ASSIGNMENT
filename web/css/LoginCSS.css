@@ -18,6 +18,14 @@ and open the template in the editor.
     font-family: 'Poppins',sans-serif;
 }
 
+form h3{
+    text-align: center;
+    color: red;
+    font-style: italic;
+}
+
+
+
 .header{
     position: fixed;
     width: 100%;
@@ -265,3 +273,4 @@ button:hover{
 .Regsiter a:hover{
     text-decoration: underline;
 }
+
