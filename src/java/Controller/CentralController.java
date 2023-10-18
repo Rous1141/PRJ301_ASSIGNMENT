@@ -48,7 +48,7 @@ public class CentralController extends HttpServlet {
             switch (action) {
                 case "welcome":{request.getRequestDispatcher(LogIn_Page).forward(request, response);break;}
                 case "shop":{request.getRequestDispatcher(Shop_Page).forward(request, response);break;}
-                case "signin":{request.getRequestDispatcher(SignIn_Page).forward(request, response);break;}
+                case "signup":{request.getRequestDispatcher(SignIn_Page).forward(request, response);break;}
                 case "cart":{request.getRequestDispatcher(Cart_Page).forward(request, response);break;}
                 case "history":{request.getRequestDispatcher(History_Page).forward(request, response);break;}
                 case "admin":{request.getRequestDispatcher(Admin_Page).forward(request, response);break;}
