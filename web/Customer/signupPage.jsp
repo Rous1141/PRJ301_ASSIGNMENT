@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,13 +25,13 @@
     </head>
     <body>
         <h1>Sign Up</h1>
-        <form action="SignupServlet" method="post" >
-            <p><input type="text" name="txtusername" required="" >*</p>
-            <p><input type="text" name="txtfullname" required="">*</p>
-            <p><input type="password" id="txtpassword" name="txtpassword" required="">*</p>
-            <p><input type="password" id="txtrepassword" name="txtrepassword" required="">*</p>
+        <form action="checkSignUp.jsp" method="post" >
+            <p><input type="text" name="txtemail" required="" >Email</p>
+            <p><input type="password" id="txtpassword" name="txtpassword" required="">Password</p>
+            <p><input type="password" id="txtrepassword" name="txtrepassword" required="">Re-Password</p>
             <p><input type="submit" value="register" onclick="return checkPassword()"></p>
         </form>
+        <%@include file="checkSignUp.jsp" %>
     </body>
 </html>
 

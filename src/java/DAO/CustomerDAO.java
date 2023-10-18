@@ -4,6 +4,8 @@
  */
 package DAO;
 
+import DTO.Account;
+import DTO.Customers;
 /**
  *
  * @author hendrix

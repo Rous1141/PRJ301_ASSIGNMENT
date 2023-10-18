@@ -31,14 +31,14 @@ public class CentralController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String SignIn_Page = "Customer/signupPage.jsp";
+            String SignIn_Page = "/Customer/signupPage.jsp";
             String LogIn_Page = "/Components/loginPage.jsp";
-            String Shop_Page = "Customer/shopPage.jsp";
-            String Admin_Page = "Admin/adminPage.jsp";
-            String Cart_Page = "Customer/cartPage.jsp";
-            String History_Page = "Customer/historyPage.jsp";
-            String Shipper_Page = "Components/shipperPage.jsp";
-            String Error_Page = "Components/errorPage.jsp";
+            String Shop_Page = "/Customer/shopPage.jsp";
+            String Admin_Page = "/Admin/adminPage.jsp";
+            String Cart_Page = "/Customer/cartPage.jsp";
+            String History_Page = "/Customer/historyPage.jsp";
+            String Shipper_Page = "/Components/shipperPage.jsp";
+            String Error_Page = "/Components/errorPage.jsp";
             
             
             
