@@ -48,13 +48,13 @@
             </div>
             <div class="Login">
                 <div class="form">
-                    <form action="LoginPage" method="post">
+                <form method="POST" action="CentralController">
                     <div class="input">
-                        <input type="text" class="input1" placeholder="Email" required>
+                        <input type="text" class="input1" name="email" placeholder="Email" value="" required>
                         <i class="fa-solid fa-envelope"></i>
                     </div>
                     <div class="input">
-                        <input type="password" class="input1" placeholder="Password" required>
+                        <input type="password" class="input1" name="pass" placeholder="Password" value="" required>
                         <i class="fa-solid fa-lock"></i>
                     </div>
                     <div class="check">
@@ -64,10 +64,16 @@
                     <div class="button">
                         <button class="btnLogin">Sign In</button>
                     </div>
+                    <%@include file="checkLogin.jsp"%>
                 </form>
                 <div class="Regsiter">
-                    <p>Don't have an account?  <a href="#">Sign Up</a></p>
-                   
+                    
+                        <form class="signUp" id="signUp" method="POST" action="CentralController">
+                            <p>Don't have an account?</p>
+                            <input type="hidden" name="action" value="signup"/>
+                            <button class="btn" type="submit" form="signUp">Sign Up</button>
+                        </form>
+                
                 </div>
                     </div>
             </div>
