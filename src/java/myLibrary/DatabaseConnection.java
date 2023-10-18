@@ -14,10 +14,10 @@ import java.sql.DriverManager;
 public class DatabaseConnection {
     public static Connection makeConnection() throws Exception{
         Connection cn=null;
-        String IP="10.211.55.2";
-        String instanceName="sql1";
+        String IP="localhost";   
+        String instanceName="DESKTOP-7705AIH\\SQLEXPRESS";
         String port="1433";
-        String uid="sa";
+        String uid="sa"; 
         String pwd="12345";
         String db="flower_shop";
         String 
