@@ -25,7 +25,8 @@
     </head>
     <body>
         <h1>Sign Up</h1>
-        <form action="checkSignUp.jsp" method="post" >
+        <form action="CentralController" method="post" >
+            <input type="hidden" name="action" value="signup" >
             <p><input type="text" name="txtemail" required="" >Email</p>
             <p><input type="password" id="txtpassword" name="txtpassword" required="">Password</p>
             <p><input type="password" id="txtrepassword" name="txtrepassword" required="">Re-Password</p>
