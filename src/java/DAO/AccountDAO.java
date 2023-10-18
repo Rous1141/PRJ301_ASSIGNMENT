@@ -26,15 +26,13 @@ public class AccountDAO {
                     + "      ,[role]\n"
                     + "  FROM [dbo].[Account]";
             PreparedStatement pst = cn.prepareStatement(sql);
-            //gan input vao 2 cho dau ?
-            pst.setString(1, email);
-            pst.setString(2, password);
+
             ResultSet rs = pst.executeQuery();
             if (rs != null && rs.next()) {
                 String e = rs.getString("email");
                 String pwd = rs.getString("password");
                 String role = rs.getString("role");
-               
+
                 result = new Account(email, password, role);
             }
             cn.close();
@@ -46,12 +44,18 @@ public class AccountDAO {
         int rs = 0;
         Connection cn = DatabaseConnection.makeConnection();
         if (cn != null) {
-            String sql = "INSERT INTO [dbo].[Account]\n"
+            String sql = "USE [flower_shop]\n"
+                    + "GO\n"
+                    + "\n"
+                    + "INSERT INTO [dbo].[Account]\n"
                     + "           ([email]\n"
                     + "           ,[password]\n"
                     + "           ,[role])\n"
                     + "     VALUES\n"
-                    + "          (?, ?, ?)";
+                    + "           ( ?,\n"
+                    + "           ?,\n"
+                    + "            ?)\n"
+                    + "GO";
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, email);
             pst.setString(2, password);
