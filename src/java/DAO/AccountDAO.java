@@ -24,16 +24,17 @@ public class AccountDAO {
             String sql = "SELECT [email]\n"
                     + "      ,[password]\n"
                     + "      ,[role]\n"
-                    + "  FROM [dbo].[Account]";
+                    + "  FROM [flower_shop].[dbo].[Account]\n"
+                    + "  where [email] = ?";
             PreparedStatement pst = cn.prepareStatement(sql);
-
+            pst.setString(1, email);
             ResultSet rs = pst.executeQuery();
             if (rs != null && rs.next()) {
                 String e = rs.getString("email");
                 String pwd = rs.getString("password");
                 String role = rs.getString("role");
 
-                result = new Account(email, password, role);
+                result = new Account(e, pwd, role);
             }
             cn.close();
         }
@@ -44,23 +45,18 @@ public class AccountDAO {
         int rs = 0;
         Connection cn = DatabaseConnection.makeConnection();
         if (cn != null) {
-            String sql = "USE [flower_shop]\n"
-                    + "GO\n"
-                    + "\n"
-                    + "INSERT INTO [dbo].[Account]\n"
+            String sql = "INSERT INTO [dbo].[Account]\n"
                     + "           ([email]\n"
                     + "           ,[password]\n"
                     + "           ,[role])\n"
-                    + "     VALUES\n"
-                    + "           ( ?,\n"
-                    + "           ?,\n"
-                    + "            ?)\n"
-                    + "GO";
+                    + "     VALUES(?,?,?)\n";
+
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, email);
             pst.setString(2, password);
             pst.setString(3, "CS");
             rs = pst.executeUpdate();
+            cn.close();
         }
         return rs;
     }

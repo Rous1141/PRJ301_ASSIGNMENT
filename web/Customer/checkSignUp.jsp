@@ -19,7 +19,7 @@
         <%
             String email = request.getParameter("txtemail");
             String password = request.getParameter("txtpassword");
-
+            if(email != null && password != null){
             try {
                 // Kiểm tra xem tài khoản đã tồn tại trong cơ sở dữ liệu chưa
                 Account account = AccountDAO.getAccount(email, password);
@@ -47,6 +47,8 @@
             } catch (Exception e) {
                 e.printStackTrace();
             }
+}
+else{}
         %>
     </body>
 </html>
