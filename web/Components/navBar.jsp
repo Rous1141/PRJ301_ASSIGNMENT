@@ -12,6 +12,16 @@
         <title>Nav Bar</title>
     </head>
     <body>
-        <h1>Something Something Something</h1>
+        <nav>
+    <div class="nav-wrapper teal lighten-2">
+        <a style="margin-left: 2%" class="brand-logo">Yuuka's Garden</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="sass.html"><i class="material-icons">search</i></a></li>
+        <li><a href="badges.html"><i class="material-icons">filter_list</i></a></li>
+        <li><a href="collapsible.html"><i class="material-icons">shopping_cart</i></a></li>
+        <li><a href="mobile.html"><i class="material-icons">account_circle</i></a></li>
+      </ul>
+    </div>
+  </nav>
     </body>
 </html>
