@@ -38,7 +38,7 @@
           </div>
           <div class="footer-copyright">
             <div class="container">
-            © 2014 Copyright SE1702
+            © 2014 Copyright Group-FlowerStore
             </div>
           </div>
         </footer>

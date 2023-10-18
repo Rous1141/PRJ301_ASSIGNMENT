@@ -44,7 +44,12 @@ public class CentralController extends HttpServlet {
             
             /* TODO output your page here. You may use following sample code. */
             String action = request.getParameter("action");
+            String role = (String) request.getAttribute("role");
+            
             if(action == null){action="welcome";}
+            if(role != null){
+                action = role; request.removeAttribute("role");
+            }
             switch (action) {
                 case "welcome":{request.getRequestDispatcher(LogIn_Page).forward(request, response);break;}
                 case "shop":{request.getRequestDispatcher(Shop_Page).forward(request, response);break;}
@@ -53,11 +58,11 @@ public class CentralController extends HttpServlet {
                 case "history":{request.getRequestDispatcher(History_Page).forward(request, response);break;}
                 case "admin":{request.getRequestDispatcher(Admin_Page).forward(request, response);break;}
                 case "shipper":{request.getRequestDispatcher(Shipper_Page).forward(request, response);break;}
-                case "error":request.getRequestDispatcher(Error_Page).forward(request, response);{break;}
+               
                     
                     
                 default:
-                    throw new AssertionError();
+                     request.getRequestDispatcher(Error_Page).forward(request, response);{break;}
             }
         }
     }

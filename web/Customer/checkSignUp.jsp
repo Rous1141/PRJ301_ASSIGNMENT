@@ -36,7 +36,7 @@
 
             if (result > 0) {
         %>
-        <p>Account created successfully. You can now <a href='loginPage.jsp'>log in</a>.</p>
+        <p>Account created successfully. You can now <a href='CentralController?action=welcome'>log in</a>.</p>
         <%
         } else {
         %>
