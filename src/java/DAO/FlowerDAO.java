@@ -66,7 +66,7 @@ public class FlowerDAO {
         try {
             Connection con = DatabaseConnection.makeConnection();
             if (con != null) {
-                String sql = "SELECT [flower_id]\n"
+                String sql = "SELECT TOP (1000) [flower_id]\n"
                         + "      ,[flower_name]\n"
                         + "      ,[flower_color]\n"
                         + "      ,[flower_price]\n"
@@ -75,10 +75,10 @@ public class FlowerDAO {
                         + "      ,[category_id]\n"
                         + "      ,[image]\n"
                         + "  FROM [flower_shop].[dbo].[Flower]\n"
-                        + "  where flower_name = ?";
+                        + "  where [flower_name] like ? ";
 
                 PreparedStatement pts = con.prepareStatement(sql);
-                pts.setString(1, name);
+                pts.setString(1, "%"+name+"%");
                 ResultSet rs = pts.executeQuery();
                 while (rs != null && rs.next()) {
 
@@ -136,8 +136,8 @@ public class FlowerDAO {
         return results;
     }
 
-    public static int CreateFlowers( String flower_name, String flower_color, int flower_price,boolean status,
-         Date import_date, int category_id ,String image  ) {
+    public static int CreateFlowers(String flower_name, String flower_color, int flower_price, boolean status,
+            Date import_date, int category_id, String image) {
         Connection con = null;
 
         PreparedStatement pts = null;
@@ -160,11 +160,11 @@ public class FlowerDAO {
                         + "";
 
                 pts = con.prepareStatement(sql);
-                pts.setString(1,flower_name );
+                pts.setString(1, flower_name);
                 pts.setString(2, flower_color);
                 pts.setInt(3, flower_price);
                 pts.setBoolean(4, status);
-                pts.setDate(5, (java.sql.Date)import_date);
+                pts.setDate(5, (java.sql.Date) import_date);
                 pts.setInt(6, category_id);
                 pts.setString(7, image);
                 ResultSet rs = pts.executeQuery();

@@ -9,6 +9,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 
 
 .myProfile{
+  margin: auto;
    opacity: 40%;
    transition: 0.5s;
 }
@@ -20,3 +21,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 ::placeholder{
     color: black;
 }
+
+.collection .collection-item i{
+    font-size: 50px ;
+}
+
+.collection .collection-item{
+    display: grid;
+    row-gap: 50px;
+   grid-template-columns: auto auto auto auto auto auto auto;
+   justify-content: space-evenly;
+   justify-self: center;
+   padding-top: 2%;
+    font-size: 20px;
+   transition: 0.5s;
+}
+
+.collection .collection-item:hover{
+    font-size: 20px;
+}
+
+

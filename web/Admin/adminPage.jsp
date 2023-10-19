@@ -34,6 +34,8 @@
             <div class="row">
                 <form action="CentralController" method="post">
                     <input type="hidden" name="action" value="admin">
+                    <input type="hidden" name="name" value="">
+                    <input type="hidden" name="mail" value="">
                     <ul class="myTable col s3">
 
                         <li><button type="submit" name="page" value="profile" class="myColumn">

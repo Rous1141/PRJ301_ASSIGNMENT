@@ -16,10 +16,10 @@
         <div class="myPage col s8 offset-s1">
             <div class="myProfile">
                 <h1>Order</h1>
-                <form class='col s5' id="name" action="CentralController" method="post" >
+                <form class='col s6' id="name" action="CentralController" method="post" >
                     <input type="hidden" name="action" value="admin"  />
                     <input type="hidden" name="page" value="order"  /> 
-                    <input id="icon_prefix" type="text" name="name" class="validate"  placeholder="Search By Name">           
+                    <input class=" col s6" id="icon_prefix" type="text" name="name" class="validate"  placeholder="Search By Name">           
                     <button class="btn waves-effect waves-light" type="submit" form="name"><i class="material-icons prefix">search</i></button>
                 </form>
                 <table>
