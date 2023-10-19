@@ -4,3 +4,4 @@
 /dist/
 /nbproject/private/
 
+src/java/myLibrary/DatabaseConnection.java
