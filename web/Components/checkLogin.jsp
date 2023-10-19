@@ -1,7 +1,9 @@
 <%-- 
     Document   : checkLogin
+
     Created on : Oct 18, 2023, 9:24:09 AM
     Author     : bolic
+
 --%>
 
 <%@page import="DAO.LoginDAO"%>
@@ -18,7 +20,9 @@
              String email = request.getParameter("email");
              String pass = request.getParameter("pass");
 
+             
              Login result = LoginDAO.LogIn(email, pass);
+             
 
              String URL = "../CentralController";
              String role = "";

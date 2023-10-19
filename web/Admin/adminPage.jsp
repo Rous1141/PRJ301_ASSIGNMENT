@@ -1,3 +1,7 @@
+
+
+
+
 <%-- 
     Document   : adminPage
     Created on : Oct 9, 2023, 8:39:45 PM
@@ -65,21 +69,24 @@
                     switch (adPage) {
                         case "": {
                 %> <%@include file="dashboard.jsp" %> <%                                    ;
-                        break;
+                        ;break;
+
                     }
 
                     case "profile": {
                 %> <%@include file="profile.jsp" %>  <%
-                        break;
+
+                        ;break;
                     }
                     case "flower": {
                 %> <%@include file="flower.jsp" %> <%
-                        break;
-                    }
+                        ;break;
+                   }
                     case "order": {
                 %> <%@include file="order.jsp" %> <%
                         break;
-                    }
+}
+
                     case "feedback": {
                 %> <%@include file="feedback.jsp" %> <%
                             break;

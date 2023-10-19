@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package DAO;
 
 import DTO.Login;
@@ -11,10 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import myLibrary.DatabaseConnection;
 
-/**
- *
- 
-@author hendrix*/
 public class LoginDAO {
 
     public static Login LogIn(String email, String password) {
@@ -38,7 +30,6 @@ public class LoginDAO {
                 }
                 con.close();
             }
-
         } catch (Exception e) {
             System.out.println(e);
         }

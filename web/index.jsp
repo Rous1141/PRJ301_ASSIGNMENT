@@ -17,8 +17,8 @@
        
 
         <% 
-           request.getRequestDispatcher("CentralController?action=welcome").forward(request, response); ;
-            
+           String URL = "CentralController";
+           response.sendRedirect(URL);
         %>
     </body>
 </html>

@@ -28,17 +28,21 @@
               <div class="col l4 offset-l2 s12">
                 <h5 class="white-text">Contact Info</h5>
                 <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Wiki</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Reddit</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Facebook</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Instagram</a></li>
+
+                    <li><a class="grey-text text-lighten-3" target="_blank" href="https://en.touhouwiki.net/wiki/Garden_of_the_Sun!">Wiki</a></li>
+                  <li><a class="grey-text text-lighten-3" target="_blank" href="https://www.reddit.com/media?url=https%3A%2F%2Fi.redd.it%2Fahi0tvxziyc41.jpg">Reddit</a></li>
+                  <li><a class="grey-text text-lighten-3" target="_blank" href="https://www.facebook.com/watch/?v=1046899260063632">Facebook</a></li>
+                  <li><a class="grey-text text-lighten-3" target="_blank" href="https://guthib.com">Instagram</a></li>
+
                 </ul>
               </div>
             </div>
           </div>
           <div class="footer-copyright">
             <div class="container">
+
             © 2014 Copyright Group-FlowerStore
+
             </div>
           </div>
         </footer>

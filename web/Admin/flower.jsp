@@ -4,6 +4,10 @@
     Author     : hendrix
 --%>
 
+
+<%@page import="DTO.Flowers"%>
+<%@page import="java.util.ArrayList"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,33 +19,67 @@
     <body>
         <div class="myPage col s8 offset-s1">
         <h1>Flower</h1>
-        <table>
-        <thead>
-          <tr>
-              <th>Name</th>
-              <th>Item Name</th>
-              <th>Item Price</th>
-          </tr>
-        </thead>
 
-        <tbody>
-          <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr>
-          <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-          </tr>
-        </tbody>
-      </table>
+        <form action="CentralController" method="post" >
+                <input type="hidden" name="action" value="admin"  />
+                <input type="hidden" name="page" value="flower"  />
+                <i class="material-icons prefix">account_circle</i>          
+                <input id="icon_prefix" type="text" name="name" class="validate">           
+                <label for="icon_prefix">First Name</label>
+                <input type="submit" name="button" value="Search By Name" />
+            </form>
+        
+         <table>
+       <%
+                    String name = request.getParameter("name");
+                     
+                    if (name != null) {
+                        ArrayList<Flowers> lists = DAO.FlowerDAO.getFlowerByName(name);
+
+                        for (Flowers f : lists) {
+
+
+                %>
+
+                <tr>
+                    <td><%= f.getFlower_id()%></td>
+                    <td><%= f.getFlower_name()   %></td>
+                    <td><%= f.getFlower_color()   %></td>
+                    <td><%= f.getFlower_price()   %></td>
+                    <td><%= f.isStatus()      %></td>
+                    <td><%=  f.getImport_date()  %></td>
+                    <td><%= f.getCategory_id()   %></td>
+                    <td><%=f.getImage()  %></td>
+                    
+
+                </tr>
+
+                <% }
+                    } 
+         else  {
+       
+                       ArrayList<Flowers> list = DAO.FlowerDAO.getFlower();
+               for (Flowers m : list) {
+                            
+         %>
+                     <tr>
+                    <td><%= m.getFlower_id()%></td>
+                    <td><%= m.getFlower_name()   %></td>
+                    <td><%= m.getFlower_color()   %></td>
+                    <td><%= m.getFlower_price()   %></td>
+                    <td><%= m.isStatus()      %></td>
+                    <td><%= m.getImport_date()  %></td>
+                    <td><%= m.getCategory_id()   %></td>
+                    <td><%=m.getImage()  %></td>
+                    
+
+                </tr>
+         
+         <% } 
+            }%>
+        
+         </table>
+
         </div>
     </body>
 </html>

@@ -11,71 +11,61 @@ import java.util.Date;
  * @author hendrix
  */
 public class Customers {
-    private String ID;
-    private String email;
-    private String fullName;
-    private Date birthDate;
-    private String phone;
+
+
+    private int customer_id;
+    private String name;
+    private Date  birth_date;
+    private String phone_number;
     private String address;
-    private boolean status;
-    private String order;
+    private String email;
+    private Boolean  staus;
+    private String orders;
 
     public Customers() {
-        ID=" ";
-        email="";
-        fullName="";
-        
     }
 
-    public Customers(String ID, String email, String fullName, Date birthDate, String phone, String address, boolean status, String order) {
-        this.ID = ID;
-        this.email = email;
-        this.fullName = fullName;
-        this.birthDate = birthDate;
-        this.phone = phone;
+    public Customers(int customer_id, String name, Date birth_date, String phone_number, String address, String email, Boolean staus, String orders) {
+        this.customer_id = customer_id;
+        this.name = name;
+        this.birth_date = birth_date;
+        this.phone_number = phone_number;
         this.address = address;
-        this.status = status;
-        this.order = order;
-    }
-
-    public String getID() {
-        return ID;
-    }
-
-    public void setID(String ID) {
-        this.ID = ID;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
         this.email = email;
+        this.staus = staus;
+        this.orders = orders;
     }
 
-    public String getFullName() {
-        return fullName;
+    public int getCustomer_id() {
+        return customer_id;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setCustomer_id(int customer_id) {
+        this.customer_id = customer_id;
     }
 
-    public Date getBirthDate() {
-        return birthDate;
+    public String getName() {
+        return name;
     }
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getPhone() {
-        return phone;
+    public Date getBirth_date() {
+        return birth_date;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setBirth_date(Date birth_date) {
+        this.birth_date = birth_date;
+    }
+
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
     }
 
     public String getAddress() {
@@ -85,23 +75,27 @@ public class Customers {
     public void setAddress(String address) {
         this.address = address;
     }
-
-    public boolean isStatus() {
-        return status;
+    public String getEmail() {
+        return email;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getOrder() {
-        return order;
+    public Boolean getStaus() {
+        return staus;
     }
 
-    public void setOrder(String order) {
-        this.order = order;
+    public void setStaus(Boolean staus) {
+        this.staus = staus;
     }
-    
-    
-    
+
+    public String getOrders() {
+        return orders;
+    }
+
+    public void setOrders(String orders) {
+        this.orders = orders;
+    }
 }
