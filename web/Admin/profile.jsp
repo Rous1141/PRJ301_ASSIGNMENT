@@ -11,28 +11,30 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+                <link href="css/profileAdmin.css" rel="stylesheet" type="text/css">
         <title>JSP Page</title>
     </head>
     <body>
         <div class="myPage col s8 offset-s1">
-            <h1>Profile</h1>
-            <form action="CentralController" method="post" >
-                <input type="hidden" name="action" value="admin"  />
-                <input type="hidden" name="page" value="profile"  />
-                <i class="material-icons prefix">account_circle</i>          
-                <input id="icon_prefix" type="text" name="mail" class="validate">           
-                <label for="icon_prefix">First Name</label>
-                <input type="submit" name="button" value="Search By Mail" />
-            </form>
-            <form action="CentralController" method="post" >
-                <input type="hidden" name="action" value="admin"  />
-                <input type="hidden" name="page" value="profile"  />
-                <i class="material-icons prefix">account_circle</i>          
-                <input id="icon_prefix" type="text" name="name" class="validate">           
-                <label for="icon_prefix">First Name</label>
-                <input type="submit" name="button" value="Search By Name" />
-            </form>
+            <div class="myProfile">
+                <h1>Profile</h1>
+                <form class='col s5' id="mail" action="CentralController" method="post" >
+                    <input type="hidden" name="action" value="admin"  />
+                    <input type="hidden" name="page" value="profile"  />
+                    <input id="icon_prefix" type="text" name="mail" class="validate" placeholder="Search By Mail">   
+                    <button class="btn waves-effect waves-light" type="submit" form="mail"><i class="material-icons prefix">search</i></button>
+
+
+                </form>
+                <form class='col s5' id="name" action="CentralController" method="post" >
+                    <input type="hidden" name="action" value="admin"  />
+                    <input type="hidden" name="page" value="profile"  /> 
+                    <input id="icon_prefix" type="text" name="name" class="validate"  placeholder="Search By Name">           
+                    <button class="btn waves-effect waves-light" type="submit" form="name"><i class="material-icons prefix">search</i></button>
+
+
+                </form>
+            
             <table>
                 
                  <%
@@ -109,7 +111,7 @@
 
 
 
-
+                </div>
         </div>
     </body>
 </html>
