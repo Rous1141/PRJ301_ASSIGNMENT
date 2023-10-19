@@ -55,14 +55,17 @@
                         %>
                         <tbody>
                             <tr>
-
-
                                 <td><div><%= f.getFlower_name()%></div></td>
                                 <td><div><%= f.getFlower_id()%> </div></td>
                                 <td><div><%= f.getFlower_price()%></div></td>
                                 <td><div><%= f.isStatus()%> </div></td>
                                 <td><div><%= f.getCategory_id()%></div></td>
-                                <td><div><button class="btn waves-effect waves-light" type="submit"><i class="material-icons">description</i></button></div></td>
+                                <td><form action="CentralController" method="POST">
+                                        <input type="hidden" name="flower" value="<%= f.getFlower_id() %>">
+                                        <input  type="hidden" name="action" value="admin"  />
+                                        <input type="hidden" name="page" value="flowerupdate"  /> 
+                                        <button type="submit" class="btn waves-effect waves-light" type="submit"><i class="material-icons">description</i></button>
+                                    </form></td>
                             </tr>
                         </tbody>
 
@@ -81,8 +84,12 @@
                                 <td><div><%= m.getFlower_price()%></div></td>
                                 <td><div><%= m.isStatus()%> </div></td>
                                 <td><div><%= m.getCategory_id()%></div></td>
-                                <td><div><button class="btn waves-effect waves-light" type="submit"><i class="material-icons">description</i></button></div></td>
-                            </tr>
+                                 <td><form action="CentralController" method="POST">
+                                        <input type="hidden" name="flower" value="<%= m.getFlower_id() %>">
+                                        <input  type="hidden" name="action" value="admin"  />
+                                        <input type="hidden" name="page" value="flowerupdate"  /> 
+                                        <button type="submit" class="btn waves-effect waves-light" type="submit"><i class="material-icons">description</i></button>
+                                    </form></td>
                         </tbody>
                     </table>
                     <% }
