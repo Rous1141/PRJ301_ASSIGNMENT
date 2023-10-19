@@ -40,14 +40,14 @@ public class CentralController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            String SignIn_Page = "/Customer/signupPage.jsp";
-            String LogIn_Page = "/Components/loginPage.jsp";
-            String Shop_Page = "/Customer/shopPage.jsp";
-            String Admin_Page = "/Admin/adminPage.jsp";
-            String Cart_Page = "/Customer/cartPage.jsp";
-            String History_Page = "/Customer/historyPage.jsp";
-            String Shipper_Page = "/Components/shipperPage.jsp";
-            String Error_Page = "/Components/errorPage.jsp";
+//            String SignIn_Page = "/Customer/signupPage.jsp";
+//            String LogIn_Page = "/Components/loginPage.jsp";
+//            String Shop_Page = "/Customer/shopPage.jsp";
+//            String Admin_Page = "/Admin/adminPage.jsp";
+//            String Cart_Page = "/Customer/cartPage.jsp";
+//            String History_Page = "/Customer/historyPage.jsp";
+//            String Shipper_Page = "/Components/shipperPage.jsp";
+//            String Error_Page = "/Components/errorPage.jsp";
 
             
 
@@ -67,7 +67,7 @@ public class CentralController extends HttpServlet {
                 
                 case "welcome":{request.getRequestDispatcher(LogIn_Page).forward(request, response);break;}
                 case "shop":{request.getRequestDispatcher(Shop_Page).forward(request, response);break;}
-                case "signup":{request.getRequestDispatcher(SignIn_Page).forward(request, response);break;}
+                case "signup":{request.getRequestDispatcher(SignUp_Page).forward(request, response);break;}
                 case "cart":{request.getRequestDispatcher(Cart_Page).forward(request, response);break;}
                 case "history":{request.getRequestDispatcher(History_Page).forward(request, response);break;}
                 case "admin":{request.getRequestDispatcher(Admin_Page).forward(request, response);break;}

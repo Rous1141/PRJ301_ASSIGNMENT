@@ -12,6 +12,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Check SignUp</title>
+        <style>
+            .notice{
+                width: 100%;
+                text-align: center;
+            }
+        </style>
     </head>
     <body>
         <h1>Sign Up Confirmation</h1>
@@ -26,7 +32,7 @@
 
                 if (account != null) {
         %>
-        <p>Username is already taken. Please choose another one.</p>
+        <p class="notice">Username is already taken. Please choose another one.</p>
         <a href='signupPage.jsp'>Sign Up</a>
         <%
         } else {
@@ -36,11 +42,11 @@
 
             if (result > 0) {
         %>
-        <p>Account created successfully. You can now <a href='CentralController?action=welcome'>log in</a>.</p>
+        <p class="notice">Account created successfully. You can now <a class="" href='CentralController?action=welcome'>log in</a>.</p>
         <%
         } else {
         %>
-        <p>Failed to create the account.</p>
+        <p class="notice">Failed to create the account.</p>
         <%
                     }
                 }
