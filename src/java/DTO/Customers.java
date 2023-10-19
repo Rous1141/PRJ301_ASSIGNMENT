@@ -4,7 +4,11 @@
  */
 package DTO;
 
+
+
+
 import java.util.Date;
+
 
 
 
@@ -13,25 +17,27 @@ import java.util.Date;
  * @author hendrix
  */
 public class Customers {
-  int customer_id;
 
-   
-    String  name;
-     Date birth_date;
-     String phone_number;
-    String  address;
-     boolean status;
-     String orders;
-      public Customers() {
+    private int customer_id;
+    private String name;
+    private Date  birth_date;
+    private String phone_number;
+    private String address;
+    private String email;
+    private Boolean  staus;
+    private String orders;
+
+    public Customers() {
     }
 
-    public Customers(int customer_id, String name, Date birth_date, String phone_number, String address, boolean status, String orders) {
+    public Customers(int customer_id, String name, Date birth_date, String phone_number, String address, String email, Boolean staus, String orders) {
         this.customer_id = customer_id;
         this.name = name;
         this.birth_date = birth_date;
         this.phone_number = phone_number;
         this.address = address;
-        this.status = status;
+        this.email = email;
+        this.staus = staus;
         this.orders = orders;
     }
 
@@ -75,12 +81,20 @@ public class Customers {
         this.address = address;
     }
 
-    public boolean isStatus() {
-        return status;
+    public String getEmail() {
+        return email;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Boolean getStaus() {
+        return staus;
+    }
+
+    public void setStaus(Boolean staus) {
+        this.staus = staus;
     }
 
     public String getOrders() {
@@ -90,5 +104,8 @@ public class Customers {
     public void setOrders(String orders) {
         this.orders = orders;
     }
-      
+
+   
+
+
 }

@@ -15,6 +15,14 @@
     <body>
         <div class="myPage col s8 offset-s1">
         <h1>Order</h1>
+        <form action="CentralController" method="post" >
+                <input type="hidden" name="action" value="admin"  />
+                <input type="hidden" name="page" value="order"  />
+                <i class="material-icons prefix">account_circle</i>          
+                <input id="icon_prefix" type="text" name="name" class="validate">           
+                <label for="icon_prefix">First Name</label>
+                <input type="submit" name="button" value="Search By Name" />
+            </form>
         <table>
         <thead>
           <tr>
