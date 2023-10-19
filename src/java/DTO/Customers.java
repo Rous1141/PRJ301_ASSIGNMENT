@@ -4,19 +4,14 @@
  */
 package DTO;
 
-
-
-
 import java.util.Date;
-
-
-
 
 /**
  *
  * @author hendrix
  */
 public class Customers {
+
 
     private int customer_id;
     private String name;
@@ -80,7 +75,6 @@ public class Customers {
     public void setAddress(String address) {
         this.address = address;
     }
-
     public String getEmail() {
         return email;
     }
@@ -104,8 +98,4 @@ public class Customers {
     public void setOrders(String orders) {
         this.orders = orders;
     }
-
-   
-
-
 }

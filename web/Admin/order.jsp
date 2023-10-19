@@ -14,6 +14,7 @@
     </head>
     <body>
         <div class="myPage col s8 offset-s1">
+
             <div class="myProfile">
                 <h1>Order</h1>
                 <form class='col s6' id="name" action="CentralController" method="post" >
@@ -30,6 +31,7 @@
                             <th>Item Price</th>
                         </tr>
                     </thead>
+
 
                     <tbody>
                         <tr>

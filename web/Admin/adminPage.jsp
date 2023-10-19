@@ -73,10 +73,12 @@
                         case "": {
                 %> <%@include file="dashboard.jsp" %> <%                                    ;
                         ;break;
+
                     }
 
                     case "profile": {
                 %> <%@include file="profile.jsp" %>  <%
+
                         ;break;
                     }
                     case "flower": {
@@ -87,6 +89,7 @@
                 %> <%@include file="order.jsp" %> <%
                         break;
 }
+
                     case "feedback": {
                 %> <%@include file="feedback.jsp" %> <%
                             break;

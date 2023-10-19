@@ -4,8 +4,10 @@
     Author     : hendrix
 --%>
 
+
 <%@page import="java.util.ArrayList"%>
 <%@page import="DTO.Customers"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,6 +18,7 @@
     </head>
     <body>
         <div class="myPage col s8 offset-s1">
+
             <div class="myProfile">
                 <h1>Profile</h1>
                 <form class='col s6' id="mail" action="CentralController" method="post" >
@@ -112,6 +115,7 @@
                     </table>
                 </div>
             </div>
+
         </div>
     </body>
 </html>

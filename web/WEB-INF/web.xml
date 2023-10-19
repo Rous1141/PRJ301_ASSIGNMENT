@@ -4,9 +4,25 @@
         <servlet-name>CentralController</servlet-name>
         <servlet-class>Controller.CentralController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginPage</servlet-name>
+        <servlet-class>Controller.LoginPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SignUpServlet</servlet-name>
+        <servlet-class>Controller.SignUpServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CentralController</servlet-name>
         <url-pattern>/CentralController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginPage</servlet-name>
+        <url-pattern>/LoginPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SignUpServlet</servlet-name>
+        <url-pattern>/SignUpServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -14,6 +30,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>Admin/adminPage.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

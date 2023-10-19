@@ -4,8 +4,10 @@
     Author     : hendrix
 --%>
 
+
 <%@page import="DTO.Flowers"%>
 <%@page import="java.util.ArrayList"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,8 +19,10 @@
     </head>
     <body>
         <div class="myPage col s8 offset-s1">
+
             <div class="myProfile">
                 <h1>Flower</h1>
+
 
                 <form class='form col s6' id="name" action="CentralController" method="post" >
                     <input  type="hidden" name="action" value="admin"  />
@@ -51,6 +55,7 @@
                         %>
                         <tbody>
                             <tr>
+
 
                                 <td><div><%= f.getFlower_name()%></div></td>
                                 <td><div><%= f.getFlower_id()%> </div></td>
@@ -85,6 +90,7 @@
 
                 </div>
             </div>
+
         </div>
     </body>
 </html>
