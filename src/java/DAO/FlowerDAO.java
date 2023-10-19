@@ -178,4 +178,43 @@ public class FlowerDAO {
         return result;
     }
 
+    public static int updateEmployee(String id, String name, String color,
+            int price, Boolean status, Date import_day, int categery_id, String image) {
+        Connection con = null;
+
+        PreparedStatement pts = null;
+        int result = 0;
+        try {
+            con = DatabaseConnection.makeConnection();
+            if (con != null) {
+                String sql = "UPDATE [dbo].[Flower]\n"
+                        + "   SET [flower_name] =?\n"
+                        + "      ,[flower_color] = ?\n"
+                        + "      ,[flower_price] = ?\n"
+                        + "      ,[status] = ?\n"
+                        + "      ,[import_date] =? \n"
+                        + "      ,[category_id] =? \n"
+                        + "      ,[image] = ?\n"
+                        + " Where [flower_id] = ?\n"
+                        + "\n"
+                        + "\n"
+                        + "";
+                pts = con.prepareStatement(sql);
+                pts.setString(8, id);
+                pts.setString(1, name);
+                pts.setString(2, color);
+                pts.setInt(3, price);
+                pts.setBoolean(4, status);
+                pts.setDate(5, (java.sql.Date) import_day);
+                pts.setInt(6, categery_id);
+                pts.setString(7, image);
+
+                result = pts.executeUpdate();
+            }
+        } catch (Exception e) {
+            Logger.getLogger(FlowerDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return result;
+    }
+
 }
