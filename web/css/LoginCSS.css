@@ -104,9 +104,9 @@ form h3{
     background-size: cover;
     display: flex;
     margin-top: 10px;
-    border: 1px solid black;
+    border: 1px solid rgb(48, 120, 69);
     border-radius: 10px;
-    border: none;
+    /*border: none;*/
 }
 
 .content{
@@ -157,9 +157,10 @@ form h3{
     color: #fff;
 }
 .Login{
-    width: 450px;
+    width: 405px;
     position: relative;
     padding: 100px 30px;
+    border-radius: 6px;
     backdrop-filter: blur(20px);
 }
 .Login h2{
@@ -198,8 +199,8 @@ form h3{
 
 .Login .input i{
     position: relative;
-    right: -370px;
-    bottom: 27px;
+    right: -355px;
+    bottom: 26px;
     color: #fff;
 }
 
@@ -258,7 +259,10 @@ button:hover{
     justify-content: center;
 
 }
-
+.btn{
+    margin-top: 20px;
+    
+}
 .Login .Regsiter a{
     text-decoration: none;
     color: #fff;
@@ -273,4 +277,6 @@ button:hover{
 .Regsiter a:hover{
     text-decoration: underline;
 }
-
+.btn:active{
+    font-size: 25px;
+}

@@ -66,7 +66,7 @@ public class FlowerDAO {
         try {
             Connection con = DatabaseConnection.makeConnection();
             if (con != null) {
-                String sql = "SELECT [flower_id]\n"
+                String sql = "SELECT TOP (1000) [flower_id]\n"
                         + "      ,[flower_name]\n"
                         + "      ,[flower_color]\n"
                         + "      ,[flower_price]\n"
@@ -75,10 +75,10 @@ public class FlowerDAO {
                         + "      ,[category_id]\n"
                         + "      ,[image]\n"
                         + "  FROM [flower_shop].[dbo].[Flower]\n"
-                        + "  where flower_name = ?";
+                        + "  where [flower_name] like ? ";
 
                 PreparedStatement pts = con.prepareStatement(sql);
-                pts.setString(1, name);
+                pts.setString(1, "%"+name+"%");
                 ResultSet rs = pts.executeQuery();
                 while (rs != null && rs.next()) {
 

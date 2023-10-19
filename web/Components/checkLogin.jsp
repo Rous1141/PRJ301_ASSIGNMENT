@@ -1,7 +1,9 @@
 <%-- 
     Document   : checkLogin
-    Created on : Oct 17, 2023, 12:18:31 PM
-    Author     : hendrix
+
+    Created on : Oct 18, 2023, 9:24:09 AM
+    Author     : bolic
+
 --%>
 
 <%@page import="DAO.LoginDAO"%>
@@ -17,15 +19,17 @@
         <% 
              String email = request.getParameter("email");
              String pass = request.getParameter("pass");
+
              
              Login result = LoginDAO.LogIn(email, pass);
              
+
              String URL = "../CentralController";
              String role = "";
              if(result != null){
               session = request.getSession(); // GET CURRENT USER SESSION
               session.setAttribute("role", result.getRole());
-              session.setAttribute("role", result.getRole());
+
                 switch(result.getRole()){
                 case "AD":{role = "admin";break;}
                 case "SH":{role = "shipper";break;}

@@ -18,6 +18,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="css/materialize.css" rel="stylesheet" type="text/css"/>
         <link href="css/adminCss.css" rel="stylesheet" type="text/css">
+       
         <title>Admin</title>
     </head>
 
@@ -33,6 +34,8 @@
             <div class="row">
                 <form action="CentralController" method="post">
                     <input type="hidden" name="action" value="admin">
+                    <input type="hidden" name="name" value="">
+                    <input type="hidden" name="mail" value="">
                     <ul class="myTable col s3">
 
                         <li><button type="submit" name="page" value="profile" class="myColumn">
@@ -70,10 +73,12 @@
                         case "": {
                 %> <%@include file="dashboard.jsp" %> <%                                    ;
                         ;break;
+
                     }
 
                     case "profile": {
                 %> <%@include file="profile.jsp" %>  <%
+
                         ;break;
                     }
                     case "flower": {
@@ -84,6 +89,7 @@
                 %> <%@include file="order.jsp" %> <%
                         break;
 }
+
                     case "feedback": {
                 %> <%@include file="feedback.jsp" %> <%
                             break;
