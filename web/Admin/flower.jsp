@@ -68,6 +68,7 @@
                     <td><%= m.getImport_date()  %></td>
                     <td><%= m.getCategory_id()   %></td>
                     <td><%=m.getImage()  %></td>
+                    <td><a href="Updateflower.jsp" >update</a></td>
                     
 
                 </tr>
@@ -76,7 +77,7 @@
             }%>
         
          </table>
-        
+           
         
         
         
