@@ -65,15 +65,20 @@
                     </ul>
                 </form>
                 <%
-                    String adPage = request.getParameter("page");
+                    String adPage = request.getParameter("page"); //Making it feel like the Page switch seemlessly - which it is NOT. This is NOT REACT, this is a hack (don't do what I do)
+                    String attPage = (String) request.getAttribute("page");  //get Atributte to get quickly to Other Page Automatically after CRUD
+                    
+                    if (attPage != null) {
+                        adPage = attPage;
+                    }
                     if (adPage == null) {
                         adPage = "";
                     }
+                    
                     switch (adPage) {
                         case "": {
                 %> <%@include file="dashboard.jsp" %> <%                                    ;
                         ;break;
-
                     }
 
                     case "profile": {
@@ -94,12 +99,25 @@
                 %> <%@include file="feedback.jsp" %> <%
                             break;
                         }
-                      
+                        case "flowerupdate": {
+                %> <%@include file="updateFlower.jsp" %> <%
+                            break;
+                        }
+
+                        case "checkUpdate": {
+                %> <%@include file="checkUpdateFlo.jsp" %> <%
+                            break;
+                        }
+
+                      default:{
+                %> <%@include file="dashboard.jsp" %> <%
+                            break;
+                        }
                     }
 
                 %>
             </div>
         </div>    
-
+            
     </body>
 </html>

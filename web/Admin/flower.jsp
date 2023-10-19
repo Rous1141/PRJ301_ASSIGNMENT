@@ -63,7 +63,7 @@
                                 <td><form action="CentralController" method="POST">
                                         <input type="hidden" name="flower" value="<%= f.getFlower_id() %>">
                                         <input  type="hidden" name="action" value="admin"  />
-                                        <input type="hidden" name="page" value="flowerupdate"  /> 
+                                        <input type="hidden" name="page" value="flowerupdate"/> 
                                         <button type="submit" class="btn waves-effect waves-light" type="submit"><i class="material-icons">description</i></button>
                                     </form></td>
                             </tr>
@@ -91,10 +91,11 @@
                                         <button type="submit" class="btn waves-effect waves-light" type="submit"><i class="material-icons">description</i></button>
                                     </form></td>
                         </tbody>
-                    </table>
+                    
                     <% }
-                        }%>
-
+                        }
+                    %>
+                    </table>
                 </div>
             </div>
         </div>
