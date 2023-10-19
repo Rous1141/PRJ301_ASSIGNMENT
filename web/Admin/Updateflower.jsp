@@ -6,10 +6,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/flowerAdmin.css" rel="stylesheet" type="text/css"/>
         <title>Flower Form</title>
     </head>
     <body>
-        <div class="">
+        <div class="myPage col s8 offset-s1">
             <h1>Flower Form</h1>
             <form action="processFlower.jsp" method="post">
                 <!-- Flower ID (int) -->
