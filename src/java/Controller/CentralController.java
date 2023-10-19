@@ -37,9 +37,9 @@ public class CentralController extends HttpServlet {
             String Admin_Page = "Admin/adminPage.jsp";
             String Cart_Page = "Customer/cartPage.jsp";
             String History_Page = "Customer/historyPage.jsp";
-            String Shipper_Page = "Components/shipperPage.jsp";
+            String Shipper_Page = "Shipper/shipperPage.jsp";
             String Error_Page = "Components/errorPage.jsp";
-            
+            String View_Order = "Shipper/viewOrder.jsp";
             
             
             /* TODO output your page here. You may use following sample code. */
@@ -54,7 +54,7 @@ public class CentralController extends HttpServlet {
                 case "admin":{request.getRequestDispatcher(Admin_Page).forward(request, response);break;}
                 case "shipper":{request.getRequestDispatcher(Shipper_Page).forward(request, response);break;}
                 case "error":request.getRequestDispatcher(Error_Page).forward(request, response);{break;}
-                    
+                case "order":request.getRequestDispatcher(View_Order).forward(request, response);{break;}
                     
                 default:
                     throw new AssertionError();
