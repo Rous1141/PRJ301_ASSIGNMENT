@@ -49,10 +49,17 @@
                     if (adPage == null) {
                         adPage = "welcome";
                     }
-
+                    switch (adPage) {
+                        case "order": {
+                %> <%@include file="viewOrder.jsp" %> <%                                    ;
+                        break;
+                    }
+                    case "profile": {
+                %> <%@include file="shipperProfile.jsp" %>  <%
+                            break;
+                        }
+                    }
                 %>
-
-
             </div>
         </div>    
 
