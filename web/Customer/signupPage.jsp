@@ -52,9 +52,8 @@ and open the template in the editor.
 
             form {
                 padding: 20px;
-                border: 1px solid black;
+                border: 1px solid rgb(48, 120, 69);
                 border-radius: 10px;
-                border: none;
                 transform: translate(-50% , -50%);
                 background-image: url('https://images.pexels.com/photos/7778287/pexels-photo-7778287.jpeg') ;
                 background-position: center;
