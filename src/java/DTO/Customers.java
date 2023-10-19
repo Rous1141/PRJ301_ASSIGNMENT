@@ -41,8 +41,6 @@ public class Customers {
         this.orders = orders;
     }
 
-   
-
     public int getCustomer_id() {
         return customer_id;
     }
@@ -82,6 +80,32 @@ public class Customers {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Boolean getStaus() {
+        return staus;
+    }
+
+    public void setStaus(Boolean staus) {
+        this.staus = staus;
+    }
+
+    public String getOrders() {
+        return orders;
+    }
+
+    public void setOrders(String orders) {
+        this.orders = orders;
+    }
+
+   
 
 
 }

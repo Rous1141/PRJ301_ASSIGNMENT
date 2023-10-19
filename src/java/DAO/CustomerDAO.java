@@ -60,4 +60,82 @@ public class CustomerDAO {
 
         return result;
     }
+
+    public static ArrayList<Customers> getCustomersByName(String findname) throws Exception {
+        ArrayList<Customers> kq = new ArrayList<>();
+        Connection cn = DatabaseConnection.makeConnection();
+        if (cn != null) {
+            String sql = "SELECT [customer_id]\n"
+                    + "      ,[email]\n"
+                    + "      ,[name]\n"
+                    + "      ,[birth_date]\n"
+                    + "      ,[phone_number]\n"
+                    + "      ,[address]\n"
+                    + "      ,[status]\n"
+                    + "      ,[orders]\n"
+                    + "  FROM [dbo].[Customer]\n"
+                    + "  where name like ?\n"
+                    + "\n"
+                    + "\n"
+                    + " ";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setString(1, "%" + findname + "%");
+            ResultSet rs = pst.executeQuery();
+            if (rs != null) {
+                while (rs.next()) {
+                    int id = rs.getInt("customer_id");
+                    String mail = rs.getString("email");
+
+                    String name = rs.getString("name");
+                    Date birth = rs.getDate("birth_date");
+                    String phone = rs.getString("phone_number");
+                    String add = rs.getString("address");
+                    boolean staus = rs.getBoolean("status");
+                    String orders = rs.getString("orders");
+                    Customers c = new Customers(id, name, birth, phone, orders, mail, staus, orders);
+                    kq.add(c);
+                }
+            }
+        }
+        return kq;
+    }
+    public static ArrayList<Customers> getCustomersByEmail(String Email) throws Exception {
+        ArrayList<Customers> kq = new ArrayList<>();
+        Connection cn = DatabaseConnection.makeConnection();
+        if (cn != null) {
+            String sql = "SELECT [customer_id]\n"
+                    + "      ,[email]\n"
+                    + "      ,[name]\n"
+                    + "      ,[birth_date]\n"
+                    + "      ,[phone_number]\n"
+                    + "      ,[address]\n"
+                    + "      ,[status]\n"
+                    + "      ,[orders]\n"
+                    + "  FROM [dbo].[Customer]\n"
+                    + "  where email like ?\n"
+                    + "\n"
+                    + "\n"
+                    + " ";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setString(1, "%" + Email + "%");
+            ResultSet rs = pst.executeQuery();
+            if (rs != null) {
+                while (rs.next()) {
+                    int id = rs.getInt("customer_id");
+                    String mail = rs.getString("email");
+
+                    String name = rs.getString("name");
+                    Date birth = rs.getDate("birth_date");
+                    String phone = rs.getString("phone_number");
+                    String add = rs.getString("address");
+                    boolean staus = rs.getBoolean("status");
+                    String orders = rs.getString("orders");
+                    Customers c = new Customers(id, name, birth, phone, orders, mail, staus, orders);
+                    kq.add(c);
+                }
+            }
+        }
+        return kq;
+    }
+
 }

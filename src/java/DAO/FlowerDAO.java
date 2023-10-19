@@ -4,6 +4,7 @@
  */
 package DAO;
 
+import DTO.Category;
 import DTO.Flowers;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -38,16 +39,15 @@ public class FlowerDAO {
                 PreparedStatement pts = con.prepareStatement(sql);
                 ResultSet rs = pts.executeQuery();
                 while (rs != null && rs.next()) {
-                   
-                    
+
                     int flower_id = rs.getInt("flower_id");
-                    String flower_name = rs.getString("flower_id");
-                    String flower_color = rs.getString("flower_id");
-                    int flower_price = rs.getInt("flower_id");
-                    boolean status = rs.getBoolean("flower_id");
-                    Date import_date = rs.getDate("flower_id");
-                    int category_id = rs.getInt("flower_id");
-                    String image = rs.getString("flower_id");
+                    String flower_name = rs.getString("flower_name");
+                    String flower_color = rs.getString("flower_color");
+                    int flower_price = rs.getInt("flower_price");
+                    boolean status = rs.getBoolean("status");
+                    Date import_date = rs.getDate("import_date");
+                    int category_id = rs.getInt("category_id");
+                    String image = rs.getString("image");
 
                     Flowers flower = new Flowers(flower_id, flower_name, flower_color, flower_price, status, import_date, category_id, image);
                     result.add(flower);
@@ -60,4 +60,122 @@ public class FlowerDAO {
 
         return result;
     }
+
+    public static ArrayList<Flowers> getFlowerByName(String name) {
+        ArrayList<Flowers> result = new ArrayList<>();
+        try {
+            Connection con = DatabaseConnection.makeConnection();
+            if (con != null) {
+                String sql = "SELECT [flower_id]\n"
+                        + "      ,[flower_name]\n"
+                        + "      ,[flower_color]\n"
+                        + "      ,[flower_price]\n"
+                        + "      ,[status]\n"
+                        + "      ,[import_date]\n"
+                        + "      ,[category_id]\n"
+                        + "      ,[image]\n"
+                        + "  FROM [flower_shop].[dbo].[Flower]\n"
+                        + "  where flower_name = ?";
+
+                PreparedStatement pts = con.prepareStatement(sql);
+                pts.setString(1, name);
+                ResultSet rs = pts.executeQuery();
+                while (rs != null && rs.next()) {
+
+                    int flower_id = rs.getInt("flower_id");
+                    String flower_name = rs.getString("flower_name");
+                    String flower_color = rs.getString("flower_color");
+                    int flower_price = rs.getInt("flower_price");
+                    boolean status = rs.getBoolean("status");
+                    Date import_date = rs.getDate("import_date");
+                    int category_id = rs.getInt("category_id");
+                    String image = rs.getString("image");
+
+                    Flowers flower = new Flowers(flower_id, flower_name, flower_color, flower_price, status, import_date, category_id, image);
+                    result.add(flower);
+                }
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(FlowerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return result;
+    }
+
+    public static ArrayList<Category> getAllCategory() {
+        ArrayList<Category> results = new ArrayList<>();
+        try {
+            Connection con = DatabaseConnection.makeConnection();
+            if (con != null) {
+                String sql = "SELECT [category_id]\n"
+                        + "      ,[category_name]\n"
+                        + "      ,[flower_season]\n"
+                        + "      ,[flower_meaning]\n"
+                        + "  FROM [dbo].[Category]";
+
+                PreparedStatement pts = con.prepareStatement(sql);
+
+                ResultSet rs = pts.executeQuery();
+                while (rs != null && rs.next()) {
+
+                    int category_id = rs.getInt("category_id");
+                    String category_name = rs.getString("category_name");
+                    String flower_session = rs.getString("flower_season");
+                    String flower_meaning = rs.getString("flower_meaning");
+
+                    Category cate = new Category(category_id, category_name, flower_session, flower_meaning);
+                    results.add(cate);
+                }
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(FlowerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return results;
+    }
+
+    public static int CreateFlowers( String flower_name, String flower_color, int flower_price,boolean status,
+         Date import_date, int category_id ,String image  ) {
+        Connection con = null;
+
+        PreparedStatement pts = null;
+        int result = 0;
+        try {
+            con = DatabaseConnection.makeConnection();
+            if (con != null) {
+                String sql = "INSERT INTO [dbo].Flower\n"
+                        + "           ([flower_name]\n"
+                        + "           ,[flower_color]\n"
+                        + "           ,[flower_price]\n"
+                        + "           ,[status]\n"
+                        + "           ,[import_date]\n"
+                        + "           ,[category_id]\n"
+                        + "           ,[image])\n"
+                        + "     VALUES\n"
+                        + "          ( ? , ? , ? ,?, ? , ? ,? )\n"
+                        + "\n"
+                        + "\n"
+                        + "";
+
+                pts = con.prepareStatement(sql);
+                pts.setString(1,flower_name );
+                pts.setString(2, flower_color);
+                pts.setInt(3, flower_price);
+                pts.setBoolean(4, status);
+                pts.setDate(5, (java.sql.Date)import_date);
+                pts.setInt(6, category_id);
+                pts.setString(7, image);
+                ResultSet rs = pts.executeQuery();
+                result = pts.executeUpdate();
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(FlowerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return result;
+    }
+
 }
