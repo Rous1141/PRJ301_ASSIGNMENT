@@ -4,7 +4,6 @@
  */
 package DAO;
 
-
 import DTO.Account;
 import DTO.Customers;
 
@@ -14,8 +13,9 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import myLibrary.DatabaseConnection;
-
 
 /**
  *
@@ -104,6 +104,7 @@ public class CustomerDAO {
         }
         return kq;
     }
+
     public static ArrayList<Customers> getCustomersByEmail(String Email) throws Exception {
         ArrayList<Customers> kq = new ArrayList<>();
         Connection cn = DatabaseConnection.makeConnection();
@@ -141,6 +142,32 @@ public class CustomerDAO {
             }
         }
         return kq;
+    }
+
+    public static int updateStatusCustomer(Boolean staus, int customer_id) {
+        Connection con = null;
+
+        PreparedStatement pts = null;
+        int result = 0;
+        try {
+            con = DatabaseConnection.makeConnection();
+            if (con != null) {
+                String sql = "UPDATE [dbo].[Customer]\n"
+                        + "   SET \n"
+                        + "      [status] = ?\n"
+                        + "      \n"
+                        + " WHERE customer_id = ?";
+                pts = con.prepareStatement(sql);
+                pts.setBoolean(1,staus );
+                pts.setInt(2,customer_id );
+                
+
+                result = pts.executeUpdate();
+            }
+        } catch (Exception e) {
+            Logger.getLogger(FlowerDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return result;
     }
 
 }
