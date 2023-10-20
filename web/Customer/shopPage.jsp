@@ -21,35 +21,37 @@
     <body>
         <%@include file="../Components/navBar.jsp" %> 
         <div class="myContainer">
-           
-            <%
-                ArrayList<Flowers> result = new ArrayList<>();
-                result = FlowerDAO.getFlower();
-                for (Flowers flower : result) {
-            %>
-
             <div class="row" style="display: inline">
+
+                <%
+                    ArrayList<Flowers> result = new ArrayList<>();
+                    result = FlowerDAO.getFlower();
+                    for (Flowers flower : result) {
+                %>
+
+
                 <div class="col s3" >
                     <div class="card">
                         <div class="card-image">
-                            <img src="<%= flower.getImage() %>">
-                            <span class="card-title"><%= flower.getFlower_name() %></span>
+                            <img src="<%= flower.getImage()%>">
+                            <span class="card-title"><%= flower.getFlower_name()%></span>
                         </div>
                         <div class="card-content">
-                            <p>Import Date: <%= flower.getImport_date() %></p>
-                            <p>Color: <%= flower.getFlower_color() %></p>
-                            <p>Price <%= flower.getFlower_price() %>$</p>
+                            <p>Import Date: <%= flower.getImport_date()%></p>
+                            <p>Color: <%= flower.getFlower_color()%></p>
+                            <p>Price <%= flower.getFlower_price()%>$</p>
                         </div>
                         <div class="card-action">
                             <a href="#">Add To Cart</a>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <%
-                }
-            %>
+
+                <%
+                    }
+                %>
+            </div>
         </div>
         <%@include file="../Components/footer.jsp" %> 
     </body>
