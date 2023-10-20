@@ -23,6 +23,7 @@
     <body>
         <%
              // Follow camelCase Style for consistency!!!
+             
              String flower = request.getParameter("flower");
              if(flower==null){ request.setAttribute("role", "error");request.getRequestDispatcher("CentralController").forward(request, response); }
              String id = request.getParameter("flower");
