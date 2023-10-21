@@ -50,6 +50,7 @@
                 <div class="form">
                     <form method="POST" action="CentralController">
                         <div class="input">
+                            <input type="hidden" name="action" value="welcome">
                             <input type="text" class="input1" name="email" placeholder="Email" value="" required>
                             <i class="fa-solid fa-envelope"></i>
                         </div>

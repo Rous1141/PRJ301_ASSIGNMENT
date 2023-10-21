@@ -52,6 +52,9 @@
 
                 <label for="flowerPrice">Flower Price :</label>
                 <input type="text" name="flowerPrice" id="flowerPrice" value='<%= flo.getFlower_price() %>'><br/>
+                
+                <label for="flowerQuan">Quantity :</label>
+                <input type="text" name="flowerQuantity" id="flowerQuan" value='<%= flo.getQuantity()%>'><br/>
 
 
                 <label for="status">Status</label>

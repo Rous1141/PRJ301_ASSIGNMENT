@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Update Flower Page</title>
     </head>
     <body>
         <%  
@@ -23,7 +23,8 @@
                     String import_date = request.getParameter("importDate");
                     int category_id = Integer.parseInt(request.getParameter("categoryId"));
                     String image = request.getParameter("image");
-                    int result = FlowerDAO.updateFlower(flower_id, flower_name, flower_color, flower_price, status, import_date, category_id, image);
+                    int quantity = Integer.parseInt( request.getParameter("flowerQuantity"));
+                    int result = FlowerDAO.updateFlower(flower_id, flower_name, flower_color, flower_price, status, import_date, category_id, image,quantity);
                     if(result != 0){request.setAttribute("role", "admin");request.setAttribute("page", "flower");request.getRequestDispatcher("../CentralController").forward(request, response); }
                     else{request.setAttribute("role", "error");request.getRequestDispatcher("CentralController").forward(request, response); }
         %>

@@ -34,6 +34,7 @@ public class FlowerDAO {
                         + "      ,[import_date]\n"
                         + "      ,[category_id]\n"
                         + "      ,[image]\n"
+                        + "      ,[quantity]\n"
                         + "  FROM [flower_shop].[dbo].[Flower]";
 
                 PreparedStatement pts = con.prepareStatement(sql);
@@ -47,9 +48,10 @@ public class FlowerDAO {
                     boolean status = rs.getBoolean("status");
                     Date import_date = rs.getDate("import_date");
                     int category_id = rs.getInt("category_id");
+                    int quantity = rs.getInt("quantity");
                     String image = rs.getString("image");
 
-                    Flowers flower = new Flowers(flower_id, flower_name, flower_color, flower_price, status, import_date, category_id, image);
+                    Flowers flower = new Flowers(flower_id, flower_name, flower_color, flower_price, status, import_date, category_id, image, quantity);
                     result.add(flower);
                 }
             }
@@ -66,7 +68,7 @@ public class FlowerDAO {
         try {
             Connection con = DatabaseConnection.makeConnection();
             if (con != null) {
-                String sql = "SELECT TOP (1000) [flower_id]\n"
+                String sql = "SELECT [flower_id]\n"
                         + "      ,[flower_name]\n"
                         + "      ,[flower_color]\n"
                         + "      ,[flower_price]\n"
@@ -74,11 +76,12 @@ public class FlowerDAO {
                         + "      ,[import_date]\n"
                         + "      ,[category_id]\n"
                         + "      ,[image]\n"
+                        + "      ,[quantity]\n"
                         + "  FROM [flower_shop].[dbo].[Flower]\n"
                         + "  where [flower_name] like ? ";
 
                 PreparedStatement pts = con.prepareStatement(sql);
-                pts.setString(1, "%"+name+"%");
+                pts.setString(1, "%" + name + "%");
                 ResultSet rs = pts.executeQuery();
                 while (rs != null && rs.next()) {
 
@@ -90,8 +93,9 @@ public class FlowerDAO {
                     Date import_date = rs.getDate("import_date");
                     int category_id = rs.getInt("category_id");
                     String image = rs.getString("image");
+                    int quantity = rs.getInt("quantity");
 
-                    Flowers flower = new Flowers(flower_id, flower_name, flower_color, flower_price, status, import_date, category_id, image);
+                    Flowers flower = new Flowers(flower_id, flower_name, flower_color, flower_price, status, import_date, category_id, image, quantity);
                     result.add(flower);
                 }
             }
@@ -108,7 +112,7 @@ public class FlowerDAO {
         try {
             Connection con = DatabaseConnection.makeConnection();
             if (con != null) {
-                String sql = "SELECT TOP (1000) [flower_id]\n"
+                String sql = "SELECT [flower_id]\n"
                         + "      ,[flower_name]\n"
                         + "      ,[flower_color]\n"
                         + "      ,[flower_price]\n"
@@ -116,6 +120,7 @@ public class FlowerDAO {
                         + "      ,[import_date]\n"
                         + "      ,[category_id]\n"
                         + "      ,[image]\n"
+                        + "      ,[quantity]\n"
                         + "  FROM [flower_shop].[dbo].[Flower]\n"
                         + "  where [flower_id] like ? ";
 
@@ -132,8 +137,8 @@ public class FlowerDAO {
                     Date import_date = rs.getDate("import_date");
                     int category_id = rs.getInt("category_id");
                     String image = rs.getString("image");
-
-                    Flowers flower = new Flowers(flower_id, flower_name, flower_color, flower_price, status, import_date, category_id, image);
+                    int quantity = rs.getInt("quantity");
+                    Flowers flower = new Flowers(flower_id, flower_name, flower_color, flower_price, status, import_date, category_id, image, flower_id);
                     result.add(flower);
                 }
             }
@@ -144,7 +149,7 @@ public class FlowerDAO {
 
         return result;
     }
-    
+
     public static ArrayList<Category> getAllCategory() {
         ArrayList<Category> results = new ArrayList<>();
         try {
@@ -179,7 +184,7 @@ public class FlowerDAO {
     }
 
     public static int CreateFlowers(String flower_name, String flower_color, int flower_price, boolean status,
-            Date import_date, int category_id, String image) {
+            Date import_date, int category_id, String image, int quantity) {
         Connection con = null;
 
         PreparedStatement pts = null;
@@ -195,8 +200,9 @@ public class FlowerDAO {
                         + "           ,[import_date]\n"
                         + "           ,[category_id]\n"
                         + "           ,[image])\n"
+                        + "           ,[quantity]\n"
                         + "     VALUES\n"
-                        + "          ( ? , ? , ? ,?, ? , ? ,? )\n"
+                        + "          ( ? , ? , ? ,?, ? , ? ,? ,?)\n"
                         + "\n"
                         + "\n"
                         + "";
@@ -209,6 +215,7 @@ public class FlowerDAO {
                 pts.setDate(5, (java.sql.Date) import_date);
                 pts.setInt(6, category_id);
                 pts.setString(7, image);
+                pts.setInt(8, quantity);
                 ResultSet rs = pts.executeQuery();
                 result = pts.executeUpdate();
             }
@@ -221,7 +228,7 @@ public class FlowerDAO {
     }
 
     public static int updateFlower(int id, String name, String color,
-            int price, Boolean status, String import_day, int categery_id, String image) {
+            int price, Boolean status, String import_day, int categery_id, String image, int quantity) {
         Connection con = null;
 
         PreparedStatement pts = null;
@@ -237,6 +244,7 @@ public class FlowerDAO {
                         + "      ,[import_date] =? \n"
                         + "      ,[category_id] =? \n"
                         + "      ,[image] = ?\n"
+                        + "      , [quantity] = ?\n"
                         + " Where [flower_id] = ?\n"
                         + "\n"
                         + "\n"
@@ -250,7 +258,7 @@ public class FlowerDAO {
                 pts.setDate(5, java.sql.Date.valueOf(import_day));
                 pts.setInt(6, categery_id);
                 pts.setString(7, image);
-
+                pts.setInt(8, quantity);
                 result = pts.executeUpdate();
             }
         } catch (Exception e) {

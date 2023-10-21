@@ -18,7 +18,8 @@
 
         <% 
            String URL = "CentralController";
-           response.sendRedirect(URL);
+           request.setAttribute("role", "welcome");
+           request.getRequestDispatcher(URL).forward(request, response);
         %>
     </body>
 </html>

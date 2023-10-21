@@ -25,6 +25,14 @@
     <body>
         <div class="background">
             <nav>
+                <%
+                     String role = (String) session.getAttribute("role");
+                     if(role==null){role="-1";}
+                     if(!role.equalsIgnoreCase("AD")){
+                        request.setAttribute("role", "-1"); //Send You To Error Page
+                        request.getRequestDispatcher("../CentralController").forward(request, response);
+                    }
+                %>
                 <div class="nav-wrapper">
                     <a href="#" class="brand-logo" style="margin-left: 2%">Welcome Admin</a>
                     <a href="CentralController" class="out" style="margin-left: 2%">Log Out</a>

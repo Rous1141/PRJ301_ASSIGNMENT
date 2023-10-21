@@ -36,6 +36,7 @@ public class CustomerDAO {
                         + "      ,[birth_date]\n"
                         + "      ,[phone_number]\n"
                         + "      ,[address]\n"
+                       + "       , [flag] \n"
                         + "      ,[status]\n"
                         + "      ,[orders]\n"
                         + "  FROM [dbo].[Customer]";
@@ -45,15 +46,15 @@ public class CustomerDAO {
                 while (rs != null && rs.next()) {
                     int id = rs.getInt("customer_id");
                     String mail = rs.getString("email");
-
                     String name = rs.getString("name");
                     Date birth = rs.getDate("birth_date");
                     String phone = rs.getString("phone_number");
                     String add = rs.getString("address");
                     boolean staus = rs.getBoolean("status");
                     String orders = rs.getString("orders");
+                    int flag = rs.getInt("flag");
 
-                    Customers emp = new Customers(id, name, birth, phone, add, mail, staus, orders);
+                    Customers emp = new Customers(id, name, birth, phone, add, mail, staus, orders, flag);
 
                     result.add(emp);
                 }
@@ -76,6 +77,7 @@ public class CustomerDAO {
                     + "      ,[birth_date]\n"
                     + "      ,[phone_number]\n"
                     + "      ,[address]\n"
+                    + "       , [flag] \n"
                     + "      ,[status]\n"
                     + "      ,[orders]\n"
                     + "  FROM [dbo].[Customer]\n"
@@ -90,14 +92,14 @@ public class CustomerDAO {
                 while (rs.next()) {
                     int id = rs.getInt("customer_id");
                     String mail = rs.getString("email");
-
                     String name = rs.getString("name");
                     Date birth = rs.getDate("birth_date");
                     String phone = rs.getString("phone_number");
                     String add = rs.getString("address");
                     boolean staus = rs.getBoolean("status");
                     String orders = rs.getString("orders");
-                    Customers c = new Customers(id, name, birth, phone, orders, mail, staus, orders);
+                    int flag = rs.getInt("flag");
+                    Customers c = new Customers(id, name, birth, phone, add, mail, staus, orders, flag);
                     kq.add(c);
                 }
             }
@@ -114,6 +116,7 @@ public class CustomerDAO {
                     + "      ,[birth_date]\n"
                     + "      ,[phone_number]\n"
                     + "      ,[address]\n"
+                     + "       , [flag] \n"
                     + "      ,[status]\n"
                     + "      ,[orders]\n"
                     + "  FROM [dbo].[Customer]\n"
@@ -128,14 +131,14 @@ public class CustomerDAO {
                 while (rs.next()) {
                     int id = rs.getInt("customer_id");
                     String mail = rs.getString("email");
-
+int flag = rs.getInt("flag");
                     String name = rs.getString("name");
                     Date birth = rs.getDate("birth_date");
                     String phone = rs.getString("phone_number");
                     String add = rs.getString("address");
                     boolean staus = rs.getBoolean("status");
                     String orders = rs.getString("orders");
-                    Customers c = new Customers(id, name, birth, phone, orders, mail, staus, orders);
+                    Customers c = new Customers(id, name, birth, phone, add, mail, staus, orders, flag);
                     kq.add(c);
                 }
             }

@@ -44,6 +44,7 @@
                                 <th>Mail</th>
                                 <th>Phone</th>
                                 <th>Address</th>
+                                <th>Flag</th>
                                 <th>Status</th>
                                 <th>Order</th>
                                 <th>Ban Account</th>
@@ -54,8 +55,9 @@
                         <%
                             String name = request.getParameter("name");
                             String mail = request.getParameter("mail");
+                            String disabled = ""; //If flag is lower than 2. The BAN Button is disabled
                             if (name != null) {
-                                ArrayList<Customers> list = DAO.CustomerDAO.getCustomersByEmail(mail);
+                                ArrayList<Customers> list = DAO.CustomerDAO.getCustomersByName(name);
                                 for (Customers e : list) {
 
 
@@ -66,9 +68,12 @@
                             <td><%= e.getEmail()%></td>
                             <td><%= e.getPhone_number()%></td>
                             <td><%= e.getAddress()%></td>
+                            <td><%= e.getFlag()%></td>
                             <td><%= e.getStaus()%></td>
                             <td><%= e.getOrders()%></td>
-                            <td><div><button class="btn waves-effect waves-light" type="submit"><i class="material-icons">warning</i></button></div></td>
+                            <% if(e.getFlag()>2){disabled = "";}else{disabled = "disabled";} %>
+                            <td><div><button <%= disabled %>
+                                     class="btn waves-effect red lighten-1 waves-light " type="submit"><i class="material-icons">warning</i></button></div></td>
 
                         </tr>
 
@@ -86,9 +91,12 @@
                             <td><%= e.getEmail()%></td>
                             <td><%= e.getPhone_number()%></td>
                             <td><%= e.getAddress()%></td>
+                            <td><%= e.getFlag()%></td>
                             <td><%= e.getStaus()%></td>
                             <td><%= e.getOrders()%></td>
-                            <td><div><button class="btn waves-effect waves-light" type="submit"><i class="material-icons">warning</i></button></div></td>
+                            <% if(e.getFlag()>2){disabled = "";}else{disabled = "disabled";} %>
+                            <td><div><button <%= disabled %>
+                                     class="btn waves-effect red lighten-1 waves-light" type="submit"><i class="material-icons">warning</i></button></div></td>
 
                         </tr>
 
@@ -103,9 +111,12 @@
                             <td><%= e.getEmail()%></td>
                             <td><%= e.getPhone_number()%></td>
                             <td><%= e.getAddress()%></td>
+                            <td><%= e.getFlag()%></td>
                             <td><%= e.getStaus()%></td>
                             <td><%= e.getOrders()%></td>
-                            <td><div><button class="btn waves-effect waves-light" type="submit"><i class="material-icons">warning</i></button></div></td>
+                            <% if(e.getFlag()>2){disabled = "";}else{disabled = "disabled";} %>
+                            <td><div><button <%= disabled %>
+                                     class="btn waves-effect red lighten-1 waves-light " type="button"><i class="material-icons">warning</i></button></div></td>
 
                         </tr>
                         <%

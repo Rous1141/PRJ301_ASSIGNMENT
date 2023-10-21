@@ -56,7 +56,7 @@ public class CentralController extends HttpServlet {
             String role = (String) request.getAttribute("role");
 
             
-            if(action == null){action="-1";}
+            if(action == null){action="welcome";}
             if(role != null){
                 action = role; request.removeAttribute("role");
             }

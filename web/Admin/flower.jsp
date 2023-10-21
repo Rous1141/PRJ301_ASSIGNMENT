@@ -38,6 +38,7 @@
                                 <th>Name</th>
                                 <th>Id</th>
                                 <th>Price</th>
+                                <th>Quantity</th>
                                 <th>Status</th>
                                 <th>Category</th>
                                 <th>Update</th>
@@ -58,6 +59,7 @@
                                 <td><div><%= f.getFlower_name()%></div></td>
                                 <td><div><%= f.getFlower_id()%> </div></td>
                                 <td><div><%= f.getFlower_price()%></div></td>
+                                <td><div><%= f.getQuantity()%></div></td>
                                 <td><div><%= f.isStatus()%> </div></td>
                                 <td><div><%= f.getCategory_id()%></div></td>
                                 <td><form action="CentralController" method="POST">
@@ -82,6 +84,7 @@
                                 <td><div><%= m.getFlower_name()%></div></td>
                                 <td><div><%= m.getFlower_id()%> </div></td>
                                 <td><div><%= m.getFlower_price()%></div></td>
+                                <td><div><%= m.getQuantity()%></div></td>
                                 <td><div><%= m.isStatus()%> </div></td>
                                 <td><div><%= m.getCategory_id()%></div></td>
                                  <td><form action="CentralController" method="POST">
