@@ -1,6 +1,6 @@
 <%-- 
-    Document   : shipperPage
-    Created on : Oct 10, 2023, 12:32:07 PM
+    Document   : adminPage
+    Created on : Oct 9, 2023, 8:39:45 PM
     Author     : hendrix
 --%>
 
@@ -28,38 +28,48 @@
 
             <div class="row">
                 <form action="CentralController" method="post">
-                    <input type="hidden" name="action" value="shipper">
+                    <input type="hidden" name="action" value="admin">
                     <ul class="myTable col s3">
 
-                        <li><button type="submit" name="page" value="profile" class="myColumn">
 
-                                <span class="myTitle">Manage Profiles</span>
-                                <i class="material-icons">account_box</i>
-                            </button></li>
 
-                        <li ><button type="submit" name="page" value="order" class="myColumn">
+                        <li ><button type="submit" name="page" value="profile" class="myColumn">
 
-                                <span class="myTitle">View Order</span>
+                                <span class="myTitle">Manage Profile</span>
                                 <i class="material-icons">store</i>
                             </button></li>
+
+                        <li><button type="submit" name="page" value="order" class="myColumn">
+
+                                <span class="myTitle">Manage Orders</span>
+                                <i class="material-icons">insert_chart</i>
+                            </button></li>
+
+                        <li><button type="submit" name="page" value="feedback" class="myColumn">
+
+                                <span class="myTitle">Read Feedback</span>
+                                <i class="material-icons">feedback</i>
+                            </button>  </li>
+
                     </ul>
                 </form>
                 <%
                     String adPage = request.getParameter("page");
                     if (adPage == null) {
-                        adPage = "welcome";
+                        adPage = "";
                     }
                     switch (adPage) {
-                        case "order": {
-                %> <%@include file="viewOrder.jsp" %> <%                                    ;
+                        case "profile": {
+                %> <%@include file="shipperProfile.jsp" %> <%                                    ;
                         break;
                     }
-                    case "profile": {
-                %> <%@include file="shipperProfile.jsp" %>  <%
+                    case "order": {
+                %> <%@include file="viewOrder.jsp" %>  <%
                             break;
                         }
                     }
                 %>
+
             </div>
         </div>    
 

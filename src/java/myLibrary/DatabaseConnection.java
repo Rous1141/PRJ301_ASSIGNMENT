@@ -21,7 +21,7 @@ public class DatabaseConnection {
         String pwd="12345";
         String db="flower_shop";
         String 
-driver="com.microsoft.sqlserver.jdbc.SQLServerDriver";
+        driver="com.microsoft.sqlserver.jdbc.SQLServerDriver";
         String url="jdbc:sqlserver://" +IP+"\\"+ instanceName+":"+port
                  +";databasename="+db+";user="+uid+";password="+pwd;
         Class.forName(driver);
