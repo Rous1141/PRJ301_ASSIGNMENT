@@ -51,8 +51,8 @@ public class FlowerDAO {
                     int quantity = rs.getInt("quantity");
                     String image = rs.getString("image");
 
-                    Flowers flower = new Flowers(flower_id, flower_name, flower_color, flower_price, status, import_date, category_id, image, quantity);
-                    result.add(flower);
+                    Flowers flowers = new Flowers(flower_id, flower_name, flower_color, flower_price, status, import_date, category_id, image, quantity);
+                    result.add(flowers);
                 }
             }
 
