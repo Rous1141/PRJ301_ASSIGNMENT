@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>You Got Error YO</h1>
+        <h1>You Got THEM Errors YO!</h1>
     </body>
 </html>

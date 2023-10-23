@@ -20,11 +20,12 @@ public class Flowers {
     Date import_date;
     int category_id;
     String image;
+    int quantity;
 
     public Flowers() {
     }
 
-    public Flowers(int flower_id, String flower_name, String flower_color, int flower_price, boolean status, Date import_date, int category_id, String image) {
+    public Flowers(int flower_id, String flower_name, String flower_color, int flower_price, boolean status, Date import_date, int category_id, String image, int quantity) {
         this.flower_id = flower_id;
         this.flower_name = flower_name;
         this.flower_color = flower_color;
@@ -33,6 +34,7 @@ public class Flowers {
         this.import_date = import_date;
         this.category_id = category_id;
         this.image = image;
+        this.quantity = quantity;
     }
 
     public int getFlower_id() {
@@ -98,5 +100,15 @@ public class Flowers {
     public void setImage(String image) {
         this.image = image;
     }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+   
 
 }

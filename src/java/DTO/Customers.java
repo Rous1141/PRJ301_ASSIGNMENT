@@ -21,11 +21,13 @@ public class Customers {
     private String email;
     private Boolean  staus;
     private String orders;
+    private int flag;
+    
 
     public Customers() {
     }
 
-    public Customers(int customer_id, String name, Date birth_date, String phone_number, String address, String email, Boolean staus, String orders) {
+    public Customers(int customer_id, String name, Date birth_date, String phone_number, String address, String email, Boolean staus, String orders, int flag) {
         this.customer_id = customer_id;
         this.name = name;
         this.birth_date = birth_date;
@@ -34,6 +36,7 @@ public class Customers {
         this.email = email;
         this.staus = staus;
         this.orders = orders;
+        this.flag = flag;
     }
 
     public int getCustomer_id() {
@@ -75,6 +78,7 @@ public class Customers {
     public void setAddress(String address) {
         this.address = address;
     }
+
     public String getEmail() {
         return email;
     }
@@ -98,4 +102,14 @@ public class Customers {
     public void setOrders(String orders) {
         this.orders = orders;
     }
+
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
+    }
+
+    
 }
