@@ -48,14 +48,17 @@
                                 <th>Status</th>
                                 <th>Order</th>
                                 <th>Ban Account</th>
-                                
+
                             </tr>
                         </thead>
 
                         <%
                             String name = request.getParameter("name");
                             String mail = request.getParameter("mail");
+                            String active = "Active"; // Customize Name for the 'Status' Column
                             String disabled = ""; //If flag is lower than 2. The BAN Button is disabled
+                            String button = "light-green accent-4"; //Button will switch color depend on if you banned user or not
+
                             if (name != null) {
                                 ArrayList<Customers> list = DAO.CustomerDAO.getCustomersByName(name);
                                 for (Customers e : list) {
@@ -69,11 +72,37 @@
                             <td><%= e.getPhone_number()%></td>
                             <td><%= e.getAddress()%></td>
                             <td><%= e.getFlag()%></td>
-                            <td><%= e.getStaus()%></td>
+                            <td>
+                                <%
+                                    if (e.getStaus() == false) {
+                                        active = "Banned";
+                                    } else {
+                                        active = "Active";
+                                    }
+                                %> <%= active%> <%
+                                %>
+                            </td>
                             <td><%= e.getOrders()%></td>
-                            <% if(e.getFlag()>2){disabled = "";}else{disabled = "disabled";} %>
-                            <td><div><button <%= disabled %>
-                                     class="btn waves-effect red lighten-1 waves-light " type="submit"><i class="material-icons">warning</i></button></div></td>
+                            <% if (e.getFlag() > 2) {
+                                    disabled = "";
+                                } else {
+                                    disabled = "disabled";
+                                } %>
+                            <td>
+                                <% if (e.getStaus() == false) {
+                                        button = "light-green accent-4";%>
+                                <div class=""><button title="UNBAN THEM <3"  <%= disabled%>
+                                                      class="btn waves-effect <%= button %> waves-light " type="submit" name ="banBtn" value="banUser"><i class="material-icons">check</i></button>
+                                </div>
+                                <% } else {
+                                    button = "deep-orange";%>
+                                <div class=""><button title="BAN THEM!!!" <%= disabled%>
+                                                      class="btn waves-effect <%= button %> waves-light " type="submit" name ="banBtn" value="banUser"><i class="material-icons">warning</i></button>
+                                </div>
+                                <%
+                                    }
+                                %>
+                            </td>
 
                         </tr>
 
@@ -92,11 +121,35 @@
                             <td><%= e.getPhone_number()%></td>
                             <td><%= e.getAddress()%></td>
                             <td><%= e.getFlag()%></td>
-                            <td><%= e.getStaus()%></td>
+                            <td><%
+                                if (e.getStaus() == false) {
+                                    active = "Banned";
+                                } else {
+                                    active = "Active";
+                                }
+                                %> <%= active%> <%
+                                %></td>
                             <td><%= e.getOrders()%></td>
-                            <% if(e.getFlag()>2){disabled = "";}else{disabled = "disabled";} %>
-                            <td><div><button <%= disabled %>
-                                     class="btn waves-effect red lighten-1 waves-light" type="submit"><i class="material-icons">warning</i></button></div></td>
+                            <% if (e.getFlag() > 2) {
+                                    disabled = "";
+                                } else {
+                                    disabled = "disabled";
+                                } %>
+                            <td>
+                                <% if (e.getStaus() == false) {
+                                        button = "light-green accent-4";%>
+                                <div class=""><button title="UNBAN THEM <3" <%= disabled%>
+                                                      class="btn waves-effect <%= button %> waves-light " type="submit" name ="banBtn" value="banUser"><i class="material-icons">check</i></button>
+                                </div>
+                                <% } else {
+                                    button = "deep-orange";%>
+                                <div class=""><button title="BAN THEM!!!"  <%= disabled%>
+                                                      class="btn waves-effect <%= button %> waves-light " type="submit" name ="banBtn" value="banUser"><i class="material-icons">warning</i></button>
+                                </div>
+                                <%
+                                    }
+                                %>
+                            </td>
 
                         </tr>
 
@@ -112,11 +165,35 @@
                             <td><%= e.getPhone_number()%></td>
                             <td><%= e.getAddress()%></td>
                             <td><%= e.getFlag()%></td>
-                            <td><%= e.getStaus()%></td>
+                            <td><%
+                                if (e.getStaus() == false) {
+                                    active = "Banned";
+                                } else {
+                                    active = "Active";
+                                }
+                                %> <%= active%> <%
+                                %></td>
                             <td><%= e.getOrders()%></td>
-                            <% if(e.getFlag()>2){disabled = "";}else{disabled = "disabled";} %>
-                            <td><div><button <%= disabled %>
-                                     class="btn waves-effect red lighten-1 waves-light " type="button"><i class="material-icons">warning</i></button></div></td>
+                            <% if (e.getFlag() > 2) {
+                                    disabled = "";
+                                } else {
+                                    disabled = "disabled";
+                                } %>
+                            <td>
+                                <% if (e.getStaus() == false) {
+                                        button = "light-green accent-4";%>
+                                <div class=""><button title="UNBAN THEM <3" <%= disabled%>
+                                                      class="btn waves-effect <%= button %> waves-light " type="submit" name ="banBtn" value="banUser"><i class="material-icons">check</i></button>
+                                </div>
+                                <% } else {
+                                    button = "deep-orange";%>
+                                <div class=""><button title="BAN THEM!!!"  <%= disabled%>
+                                                      class="btn waves-effect <%= button %> waves-light " type="submit" name ="banBtn" value="banUser"><i class="material-icons">warning</i></button>
+                                </div>
+                                <%
+                                    }
+                                %>
+                            </td>
 
                         </tr>
                         <%

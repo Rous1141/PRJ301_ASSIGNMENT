@@ -36,7 +36,6 @@ public class AdminDAO {
             if (rs != null && rs.next()) {
                
                 String name = rs.getString("name");
-                
 
                 result = new Admin(0, 0, name, "NA", "NA", "NA", "NA", "AD");
             }

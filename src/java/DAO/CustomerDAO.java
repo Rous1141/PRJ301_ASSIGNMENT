@@ -4,18 +4,15 @@
  */
 package DAO;
 
-
-import DTO.Account;
-import DTO.Customers;
-
 import DTO.Customers;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import myLibrary.DatabaseConnection;
-
 
 /**
  *
@@ -36,7 +33,7 @@ public class CustomerDAO {
                         + "      ,[birth_date]\n"
                         + "      ,[phone_number]\n"
                         + "      ,[address]\n"
-                       + "       , [flag] \n"
+                        + "       , [flag] \n"
                         + "      ,[status]\n"
                         + "      ,[orders]\n"
                         + "  FROM [dbo].[Customer]";
@@ -106,6 +103,7 @@ public class CustomerDAO {
         }
         return kq;
     }
+
     public static ArrayList<Customers> getCustomersByEmail(String Email) throws Exception {
         ArrayList<Customers> kq = new ArrayList<>();
         Connection cn = DatabaseConnection.makeConnection();
@@ -116,7 +114,7 @@ public class CustomerDAO {
                     + "      ,[birth_date]\n"
                     + "      ,[phone_number]\n"
                     + "      ,[address]\n"
-                     + "       , [flag] \n"
+                    + "       , [flag] \n"
                     + "      ,[status]\n"
                     + "      ,[orders]\n"
                     + "  FROM [dbo].[Customer]\n"
@@ -131,7 +129,7 @@ public class CustomerDAO {
                 while (rs.next()) {
                     int id = rs.getInt("customer_id");
                     String mail = rs.getString("email");
-int flag = rs.getInt("flag");
+                    int flag = rs.getInt("flag");
                     String name = rs.getString("name");
                     Date birth = rs.getDate("birth_date");
                     String phone = rs.getString("phone_number");
@@ -146,4 +144,27 @@ int flag = rs.getInt("flag");
         return kq;
     }
 
+    public static int updateCustomerStatus(int ID) throws Exception {
+        int kq = 0;
+        try{
+            Connection cn = DatabaseConnection.makeConnection();
+        
+        if (cn != null) {
+            String sql = "UPDATE [dbo].[Customer]\n"
+                    + "   SET \n"
+                    + "       [status] = 1\n"
+                    + "      ,[flag] = 0\n"
+                    + " WHERE [customer_id] = ?";
+    
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setInt(1, ID);
+            kq = pst.executeUpdate();
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return kq;
+    }
+    
+    
 }

@@ -19,3 +19,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 ::placeholder{
     color: black;
 }
+
+btn{
+    pointer-events: auto !important;
+    visibility: hidden !important;
+     background-color: #fdd835 !important;
+}
+
+btn:hover{
+    pointer-events: auto !important;
+    background-color: #fdd835 !important;
+}
+
+btn:active{
+    pointer-events: auto !important;
+    background-color: #fff59d !important;
+}
