@@ -2,6 +2,9 @@
 
 
 
+<%@page import="DAO.AdminDAO"%>
+<%@page import="DTO.Admin"%>
+<%@page import="DTO.Login"%>
 <%-- 
     Document   : adminPage
     Created on : Oct 9, 2023, 8:39:45 PM
@@ -27,14 +30,17 @@
             <nav>
                 <%
                      String role = (String) session.getAttribute("role");
+                     Login user = (Login) session.getAttribute("user");
+                     Admin result = AdminDAO.getAccount(user.getEmail());
+                     
                      if(role==null){role="-1";}
-                     if(!role.equalsIgnoreCase("AD")){
+                     if(!role.equalsIgnoreCase("AD") || result==null){
                         request.setAttribute("role", "-1"); //Send You To Error Page
                         request.getRequestDispatcher("../CentralController").forward(request, response);
                     }
                 %>
                 <div class="nav-wrapper">
-                    <a href="#" class="brand-logo" style="margin-left: 2%">Welcome Admin</a>
+                    <a href="#" class="brand-logo" style="margin-left: 2%">Welcome Admin <%= result.getName() %></a>
                     <a href="CentralController" class="out" style="margin-left: 2%">Log Out</a>
                 </div>
             </nav>

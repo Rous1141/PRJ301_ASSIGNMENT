@@ -138,7 +138,7 @@ public class FlowerDAO {
                     int category_id = rs.getInt("category_id");
                     String image = rs.getString("image");
                     int quantity = rs.getInt("quantity");
-                    Flowers flower = new Flowers(flower_id, flower_name, flower_color, flower_price, status, import_date, category_id, image, flower_id);
+                    Flowers flower = new Flowers(flower_id, flower_name, flower_color, flower_price, status, import_date, category_id, image, quantity);
                     result.add(flower);
                 }
             }
@@ -250,7 +250,7 @@ public class FlowerDAO {
                         + "\n"
                         + "";
                 pts = con.prepareStatement(sql);
-                pts.setInt(8, id);
+                pts.setInt(9, id);
                 pts.setString(1, name);
                 pts.setString(2, color);
                 pts.setInt(3, price);
