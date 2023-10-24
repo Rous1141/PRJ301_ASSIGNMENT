@@ -37,6 +37,7 @@
                 </form>
 
                 <div class='table col s12'>  
+                    
                     <table class="highlight">
                         <thead>
                             <tr>
@@ -165,14 +166,16 @@
                             <td><%= e.getPhone_number()%></td>
                             <td><%= e.getAddress()%></td>
                             <td><%= e.getFlag()%></td>
-                            <td><%
+                            <td>
+                                <%
                                 if (e.getStaus() == false) {
                                     active = "Banned";
                                 } else {
                                     active = "Active";
                                 }
                                 %> <%= active%> <%
-                                %></td>
+                                %>
+                                </td>
                             <td><%= e.getOrders()%></td>
                             <% if (e.getFlag() > 2) {
                                     disabled = "";

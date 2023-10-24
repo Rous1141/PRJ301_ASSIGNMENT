@@ -144,7 +144,7 @@ public class CustomerDAO {
         return kq;
     }
 
-    public static int updateCustomerStatus(int ID) throws Exception {
+    public static int updateCustomerStatus(int ID, int flag, boolean status) throws Exception {
         int kq = 0;
         try{
             Connection cn = DatabaseConnection.makeConnection();
@@ -152,12 +152,14 @@ public class CustomerDAO {
         if (cn != null) {
             String sql = "UPDATE [dbo].[Customer]\n"
                     + "   SET \n"
-                    + "       [status] = 1\n"
-                    + "      ,[flag] = 0\n"
+                    + "       [status] = ?\n"
+                    + "      ,[flag] = ?\n"
                     + " WHERE [customer_id] = ?";
     
             PreparedStatement pst = cn.prepareStatement(sql);
-            pst.setInt(1, ID);
+            pst.setBoolean(1, status);
+            pst.setInt(2, flag);
+            pst.setInt(3, ID);
             kq = pst.executeUpdate();
             }
         } catch (Exception e) {
