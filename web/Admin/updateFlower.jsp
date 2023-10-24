@@ -36,7 +36,7 @@
             <h1>Flower Form</h1>
             <form action="CentralController" method="post">
                 <input  type="hidden" name="action" value="admin"  />
-                <input type="hidden" name="page" value="checkUpdate"/> 
+                <input type="hidden" name="page" value="checkUpdateFlo"/> 
                 <!-- Flower ID (int) -->
                 <label for="flowerId">Flower ID</label>
                 <input type="text" name="flowerId" id="flowerId" value='<%= flo.getFlower_id() %>' ><br/>

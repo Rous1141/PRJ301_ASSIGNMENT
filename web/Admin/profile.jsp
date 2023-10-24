@@ -26,8 +26,6 @@
                     <input type="hidden" name="page" value="profile"  />
                     <input class=" col s10" id="icon_prefix" type="text" name="mail" class="validate" placeholder="Search By Mail">   
                     <button class="btn waves-effect waves-light" type="submit" form="mail"><i class="material-icons prefix">search</i></button>
-
-
                 </form>
                 <form class='col s6' id="name" action="CentralController" method="post" >
                     <input type="hidden" name="action" value="admin"  />
@@ -37,7 +35,6 @@
                 </form>
 
                 <div class='table col s12'>  
-                    
                     <table class="highlight">
                         <thead>
                             <tr>
@@ -52,6 +49,7 @@
 
                             </tr>
                         </thead>
+
 
                         <%
                             String name = request.getParameter("name");
@@ -68,12 +66,14 @@
                         %>
 
                         <tr>
+
                             <td><%= e.getName()%></td>
                             <td><%= e.getEmail()%></td>
                             <td><%= e.getPhone_number()%></td>
                             <td><%= e.getAddress()%></td>
                             <td><%= e.getFlag()%></td>
                             <td>
+
                                 <%
                                     if (e.getStaus() == false) {
                                         active = "Banned";
@@ -88,21 +88,28 @@
                                     disabled = "";
                                 } else {
                                     disabled = "disabled";
-                                } %>
+                                }%>
                             <td>
-                                <% if (e.getStaus() == false) {
+                                <form id="banUser" action="CentralController" method="POST">
+                                    <input type="hidden" name="page" value="checkUpdateStatus"/>  <%-- SEND YOU BACK TO THIS PAGE AUTOMATICALLY --%>
+                                    <input type="hidden" name="action" value="admin"  />
+                                    <input type="hidden" name="ID" value="<%= e.getCustomer_id()%>">
+                                    <input type="hidden" name="flag" value="<%= e.getFlag()%>">
+                                    <input type="hidden" name="status" value="<%= e.getStaus()%>">
+                                    <% if (e.getStaus() == false) {
                                         button = "light-green accent-4";%>
-                                <div class=""><button title="UNBAN THEM <3"  <%= disabled%>
-                                                      class="btn waves-effect <%= button %> waves-light " type="submit" name ="banBtn" value="banUser"><i class="material-icons">check</i></button>
-                                </div>
-                                <% } else {
+                                    <div class=""><button title="UNBAN THEM <3"  <%= disabled%>
+                                                          class="btn waves-effect <%= button%> waves-light " type="submit" name ="banBtn" value="banUser"><i class="material-icons">check</i></button>
+                                    </div>
+                                    <% } else {
                                     button = "deep-orange";%>
-                                <div class=""><button title="BAN THEM!!!" <%= disabled%>
-                                                      class="btn waves-effect <%= button %> waves-light " type="submit" name ="banBtn" value="banUser"><i class="material-icons">warning</i></button>
-                                </div>
-                                <%
-                                    }
-                                %>
+                                    <div class=""><button title="BAN THEM!!!" <%= disabled%>
+                                                          class="btn waves-effect <%= button%> waves-light " type="submit" name ="banBtn" value="banUser"><i class="material-icons">warning</i></button>
+                                    </div>
+                                    <%
+                                        }
+                                    %>
+                                </form>
                             </td>
 
                         </tr>
@@ -135,23 +142,29 @@
                                     disabled = "";
                                 } else {
                                     disabled = "disabled";
-                                } %>
+                                }%>
                             <td>
-                                <% if (e.getStaus() == false) {
+                                <form id="banUser" action="CentralController" method="POST">
+                                    <input type="hidden" name="page" value="checkUpdateStatus"/>  <%-- SEND YOU BACK TO THIS PAGE AUTOMATICALLY --%>
+                                    <input type="hidden" name="action" value="admin"  />
+                                    <input type="hidden" name="ID" value="<%= e.getCustomer_id()%>">
+                                    <input type="hidden" name="flag" value="<%= e.getFlag()%>">
+                                    <input type="hidden" name="status" value="<%= e.getStaus()%>">
+                                    <% if (e.getStaus() == false) {
                                         button = "light-green accent-4";%>
-                                <div class=""><button title="UNBAN THEM <3" <%= disabled%>
-                                                      class="btn waves-effect <%= button %> waves-light " type="submit" name ="banBtn" value="banUser"><i class="material-icons">check</i></button>
-                                </div>
-                                <% } else {
+                                    <div class=""><button title="UNBAN THEM <3"  <%= disabled%>
+                                                          class="btn waves-effect <%= button%> waves-light " type="submit" name ="banBtn" value="banUser"><i class="material-icons">check</i></button>
+                                    </div>
+                                    <% } else {
                                     button = "deep-orange";%>
-                                <div class=""><button title="BAN THEM!!!"  <%= disabled%>
-                                                      class="btn waves-effect <%= button %> waves-light " type="submit" name ="banBtn" value="banUser"><i class="material-icons">warning</i></button>
-                                </div>
-                                <%
-                                    }
-                                %>
+                                    <div class=""><button title="BAN THEM!!!" <%= disabled%>
+                                                          class="btn waves-effect <%= button%> waves-light " type="submit" name ="banBtn" value="banUser"><i class="material-icons">warning</i></button>
+                                    </div>
+                                    <%
+                                        }
+                                    %>
+                                </form>
                             </td>
-
                         </tr>
 
                         <% }
@@ -168,35 +181,43 @@
                             <td><%= e.getFlag()%></td>
                             <td>
                                 <%
-                                if (e.getStaus() == false) {
-                                    active = "Banned";
-                                } else {
-                                    active = "Active";
-                                }
+                                    if (e.getStaus() == false) {
+                                        active = "Banned";
+                                    } else {
+                                        active = "Active";
+                                    }
                                 %> <%= active%> <%
                                 %>
-                                </td>
+                            </td>
                             <td><%= e.getOrders()%></td>
                             <% if (e.getFlag() > 2) {
                                     disabled = "";
                                 } else {
                                     disabled = "disabled";
-                                } %>
+                                }%>
                             <td>
-                                <% if (e.getStaus() == false) {
+                                <form id="banUser" action="CentralController" method="POST">
+                                    <input type="hidden" name="page" value="checkUpdateStatus"/>  <%-- SEND YOU BACK TO THIS PAGE AUTOMATICALLY --%>
+                                    <input type="hidden" name="action" value="admin"  />
+                                    <input type="hidden" name="ID" value="<%= e.getCustomer_id()%>">
+                                    <input type="hidden" name="flag" value="<%= e.getFlag()%>">
+                                    <input type="hidden" name="status" value="<%= e.getStaus()%>">
+                                    <% if (e.getStaus() == false) {
                                         button = "light-green accent-4";%>
-                                <div class=""><button title="UNBAN THEM <3" <%= disabled%>
-                                                      class="btn waves-effect <%= button %> waves-light " type="submit" name ="banBtn" value="banUser"><i class="material-icons">check</i></button>
-                                </div>
-                                <% } else {
+                                    <div class=""><button title="UNBAN THEM <3"  <%= disabled%>
+                                                          class="btn waves-effect <%= button%> waves-light " type="submit" name ="banBtn" value="banUser"><i class="material-icons">check</i></button>
+                                    </div>
+                                    <% } else {
                                     button = "deep-orange";%>
-                                <div class=""><button title="BAN THEM!!!"  <%= disabled%>
-                                                      class="btn waves-effect <%= button %> waves-light " type="submit" name ="banBtn" value="banUser"><i class="material-icons">warning</i></button>
-                                </div>
-                                <%
-                                    }
-                                %>
+                                    <div class=""><button title="BAN THEM!!!" <%= disabled%>
+                                                          class="btn waves-effect <%= button%> waves-light " type="submit" name ="banBtn" value="banUser"><i class="material-icons">warning</i></button>
+                                    </div>
+                                    <%
+                                        }
+                                    %>
+                                </form>
                             </td>
+
 
                         </tr>
                         <%
@@ -204,6 +225,7 @@
                             }
                         %>
                     </table>
+
                 </div>
             </div>
 
