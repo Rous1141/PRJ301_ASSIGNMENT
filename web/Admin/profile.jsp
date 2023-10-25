@@ -68,8 +68,13 @@
                             <td><%= e.getAddress()%></td>
                             <td><%= e.getStaus()%></td>
                             <td><%= e.getOrders()%></td>
-                            <td><div><button class="btn waves-effect waves-light" type="submit"><i class="material-icons">warning</i></button></div></td>
-
+                            <td><form action="CentralController" method="POST">
+                                        <input type="hidden" name="profile" value="<%= e.getCustomer_id()   %>">
+                                        <input  type="hidden" name="action" value="admin"  />
+                                        <input type="hidden" name="page" value="bandAccount"/> 
+                                        <button type="submit" class="btn waves-effect waves-light" type="submit"><i class="material-icons">warning</i></button>
+                                    </form>
+                            </td>
                         </tr>
 
                         <% }
@@ -88,7 +93,12 @@
                             <td><%= e.getAddress()%></td>
                             <td><%= e.getStaus()%></td>
                             <td><%= e.getOrders()%></td>
-                            <td><div><button class="btn waves-effect waves-light" type="submit"><i class="material-icons">warning</i></button></div></td>
+                            <td><form action="CentralController" method="POST">
+                                        <input type="hidden" name="profile" value="<%= e.getCustomer_id()   %>">
+                                        <input  type="hidden" name="action" value="admin"  />
+                                        <input type="hidden" name="page" value="bandAccount"/> 
+                                        <button type="submit" class="btn waves-effect waves-light" type="submit"><i class="material-icons">warning</i></button>
+                                    </form></td>
 
                         </tr>
 
@@ -105,7 +115,12 @@
                             <td><%= e.getAddress()%></td>
                             <td><%= e.getStaus()%></td>
                             <td><%= e.getOrders()%></td>
-                            <td><div><button class="btn waves-effect waves-light" type="submit"><i class="material-icons">warning</i></button></div></td>
+                            <td><form action="CentralController" method="POST">
+                                        <input type="hidden" name="profile" value="<%= e.getCustomer_id()   %>">
+                                        <input  type="hidden" name="action" value="admin"  />
+                                        <input type="hidden" name="page" value="bandAccount"/> 
+                                        <button type="submit" class="btn waves-effect waves-light" type="submit"><i class="material-icons">warning</i></button>
+                                    </form></td>
 
                         </tr>
                         <%

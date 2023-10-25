@@ -94,7 +94,11 @@
                 %> <%@include file="feedback.jsp" %> <%
                             break;
                         }
-                      
+                    
+                       case "bandAccount": {
+                %> <%@include file="bandAccount.jsp" %> <%
+                            break;
+                        }
                     }
 
                 %>
