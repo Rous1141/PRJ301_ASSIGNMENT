@@ -99,6 +99,10 @@
                 %> <%@include file="bandAccount.jsp" %> <%
                             break;
                         }
+                       case "checkBandAccount": {
+                %> <%@include file="bandAccount.jsp" %> <%
+                            break;
+                        }
                     }
 
                 %>
