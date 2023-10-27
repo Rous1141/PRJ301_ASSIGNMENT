@@ -21,6 +21,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="css/materialize.css" rel="stylesheet" type="text/css"/>
         <link href="css/adminCss.css" rel="stylesheet" type="text/css">
+        <link href="css/orderAdmin.css" rel="stylesheet" type="text/css"/>
 
         <title>Admin</title>
     </head>
@@ -82,8 +83,9 @@
                 </form>
                 <%
                     String adPage = request.getParameter("page"); //Making it feel like the Page switch seemlessly - which it is NOT. This is NOT REACT, this is a hack (don't do what I do)
-                    String attPage = (String) request.getAttribute("page");  //get Atributte to get quickly to Other Page Automatically after CRUD
+                    String attPage = (String) request.getAttribute("page");  //Making it feel like the Page switch seemlessly - which it is NOT. This is NOT REACT, this is a hack (don't do what I do)
 
+//get Atributte to get quickly to Other Page Automatically after CRUD
                     if (attPage != null) {
                         adPage = attPage;
                     }
@@ -99,7 +101,7 @@
                     }
 
                     case "profile": {
-                %> <%@include file="profile.jsp" %>  <%                        ;
+                %> <%@include file="customerProfile.jsp" %>  <%                        ;
                         break;
                     }
                     case "flower": {
@@ -107,8 +109,15 @@
                         break;
                     }
                     case "order": {
-                %> <%@include file="order.jsp" %> <%
-                        break;
+                %> <%@include file="order.jsp" %> <%                        break;
+                    }
+
+                    case "shipper": {
+                %> <%@include file="shipper.jsp" %> <%                        break;
+                    }
+
+                    case "orderDetail": {
+                %> <%@include file="orderDetail.jsp" %> <%                        break;
                     }
 
                     case "feedback": {
@@ -116,18 +125,19 @@
                         break;
                     }
                     case "flowerupdate": {
-                %> <%@include file="updateFlower.jsp" %> <%                        
-                        break;
+                %> <%@include file="updateFlower.jsp" %> <%                        break;
                     }
 
                     case "checkUpdateFlo": {
-                %> <%@include file="checkUpdateFlo.jsp" %> <%                        
-                        break;
+                %> <%@include file="checkUpdateFlo.jsp" %> <%                        break;
+                    }
+
+                    case "checkUpdateOrder": {
+                %> <%@include file="updateOrder.jsp" %> <%                        break;
                     }
 
                     case "checkUpdateStatus": {
-                %> <%@include file="checkUpdateStatus.jsp" %> <%
-                        break;
+                %> <%@include file="checkUpdateStatus.jsp" %> <%                        break;
                     }
 
                     default: {

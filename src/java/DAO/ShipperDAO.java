@@ -40,7 +40,7 @@ public class ShipperDAO {
                 while (rs != null && rs.next()) {
                    
                     String email = rs.getString("email");
-                    String name = rs.getString("email");
+                    String name = rs.getString("name");
                     java.util.Date birth_date = rs.getDate("birth_date");
                     String phone_number = rs.getString("phone_number");
                     String address = rs.getString("address");

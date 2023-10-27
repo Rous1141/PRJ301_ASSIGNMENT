@@ -21,22 +21,21 @@
         <div class="myPage col s8 offset-s1">
 
             <div class="myProfile">
-                <h1>Shipper's Profiles</h1>
+                <h1>Order's Detail</h1>
                 <form class='col s6' id="name" action="CentralController" method="post" >
                     <input type="hidden" name="action" value="admin"  />
                     <input type="hidden" name="page" value="order"  />
-
-                    <button class="btn waves-effect waves-light">Assign Shippers To Orders</button>
+                    <button class="btn waves-effect waves-light">Assign Orders To Shippers</button>
                 </form>
                 <table>
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Address</th>
-                            <th>Email</th>
-                            <th>Phone</th>
+                            <th>ID</th>
+                            <th>Order Requested On</th>
+                            <th>Deliver Address</th>
+                            <th>Total Price</th>
+                            <th>Payment Method</th>
                             <th>Status</th>
-                            <th>On Order?</th>
                             
                         </tr>
                     </thead>
@@ -44,24 +43,19 @@
 
                     <tbody>
                         <%
-                            ArrayList<Shippers> shipList = new ArrayList<>();
-                            shipList = ShipperDAO.getAll();
+                            
                             ArrayList<Orders> orderList = new ArrayList<>();
-                            String shipOrder = "disabled"; //check if shipper is already on shift
                             orderList = OrderDAO.getAllOrders();
-                            for(Shippers ship : shipList){
+                            for(Orders order : orderList){
                         %>
                         <tr>
 
-                            <td><%= ship.getName() %></td>
-                            <td><%= ship.getAddress() %></td>
-                            <td><%= ship.getEmail() %></td>
-                            <td><%= ship.getPhone_number() %></td>
-                            <td><% if(ship.isStatus()){%>Active<%}else{%>Inactive<%} %></td>
-                            <td><% if(ship.getOrder_assigned()!= 0){%>Busy With Order: <%= ship.getOrder_assigned() %> <% }else{ shipOrder = "";
-                                            %>Shipper is free<%}  %></td>
-                            
-
+                            <td><%= order.getOrder_id() %></td>
+                            <td><%= order.getOrder_date()%></td>
+                            <td><%= order.getDelivery_address() %></td>
+                            <td><%= order.getTotal_payment() %></td>
+                            <td><%= order.getPayment_method() %></td>
+                            <td> <% if(order.getStatus()){ %>Not Deliver<%}else{%>Delivering<%} %></td>
                         </tr>
                         <%
                             }
