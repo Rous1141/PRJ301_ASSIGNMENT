@@ -13,7 +13,7 @@ import java.util.Date;
  * @author hendrix
  */
 public class Shippers {
-    int shipper_id;
+      int shipper_id;
       String name;
       Date birth_date;
       String phone_number;
@@ -21,11 +21,12 @@ public class Shippers {
       String email;
       String password;
       boolean status;
+      int order_assigned;
 
     public Shippers() {
     }
 
-    public Shippers(int shipper_id, String name, Date birth_date, String phone_number, String address, String email, String password, boolean status) {
+    public Shippers(int shipper_id, String name, Date birth_date, String phone_number, String address, String email, String password, boolean status, int order_assigned) {
         this.shipper_id = shipper_id;
         this.name = name;
         this.birth_date = birth_date;
@@ -34,7 +35,18 @@ public class Shippers {
         this.email = email;
         this.password = password;
         this.status = status;
+        this.order_assigned = order_assigned;
     }
+
+    public int getOrder_assigned() {
+        return order_assigned;
+    }
+
+    public void setOrder_assigned(int order_assigned) {
+        this.order_assigned = order_assigned;
+    }
+
+   
 
     public int getShipper_id() {
         return shipper_id;
