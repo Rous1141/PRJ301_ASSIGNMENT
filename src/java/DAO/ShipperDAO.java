@@ -25,34 +25,31 @@ public class ShipperDAO {
         try {
             con = DatabaseConnection.makeConnection();
             if (con != null) {
-                String sql = "SELECT [customer_id]\n"
-                        + "      ,[email]\n"
+                String sql = "SELECT [email]\n"
                         + "      ,[name]\n"
                         + "      ,[birth_date]\n"
                         + "      ,[phone_number]\n"
                         + "      ,[address]\n"
-                        + "       , [flag] \n"
+                        + "      ,[password]\n"
                         + "      ,[status]\n"
-                        + "      ,[orders]\n"
-                        + "       ,[[order_assigned]]\n"
-                        + "  FROM [dbo].[Customer]";
+                        + "      ,[order_assigned]\n"
+                        + "  FROM [flower_shop].[dbo].[Shipper]";
                 PreparedStatement pts = con.prepareStatement(sql);
 
                 ResultSet rs = pts.executeQuery();
                 while (rs != null && rs.next()) {
-                    int id = rs.getInt("customer_id");
-                    String mail = rs.getString("email");
-                    String name = rs.getString("name");
-                    Date birth = rs.getDate("birth_date");
-                    String phone = rs.getString("phone_number");
-                    String add = rs.getString("address");
-                    boolean staus = rs.getBoolean("status");
-                    String orders = rs.getString("orders");
                    
-                    int order_assigned = rs.getInt("[order_assigned]");
-                    
-                    Shippers ship = new Shippers(id, name, birth, phone, orders, mail, add, staus, order_assigned);
-        result.add(ship);
+                    String email = rs.getString("email");
+                    String name = rs.getString("email");
+                    java.util.Date birth_date = rs.getDate("birth_date");
+                    String phone_number = rs.getString("phone_number");
+                    String address = rs.getString("address");
+                    String password = rs.getString("password");;
+                    boolean status = rs.getBoolean("status");
+                    int order_assigned = rs.getInt("order_assigned");
+                  
+                    Shippers ship = new Shippers(order_assigned, name, birth_date, phone_number, address, email, password, status, order_assigned);
+                    result.add(ship);
                 }
                 con.close();
             }
@@ -62,22 +59,22 @@ public class ShipperDAO {
 
         return result;
     }
-    
-    public static int updateShipper(String email,int order) throws Exception {
+
+    public static int updateShipper(String email, int order) throws Exception {
         int result = 0;
-        try{
+        try {
             Connection cn = DatabaseConnection.makeConnection();
-        
-        if (cn != null) {
-            String sql = "UPDATE [dbo].[Shipper]\n" +
-                            " SET [Order_Assigned] = ? \n" +
-                            " WHERE [email] = ? ";
-    
-            PreparedStatement pst = cn.prepareStatement(sql);
-            pst.setInt(1, order);
-            pst.setString(2, email);
-           
-            result = pst.executeUpdate();
+
+            if (cn != null) {
+                String sql = "UPDATE [dbo].[Shipper]\n"
+                        + " SET [Order_Assigned] = ? \n"
+                        + " WHERE [email] = ? ";
+
+                PreparedStatement pst = cn.prepareStatement(sql);
+                pst.setInt(1, order);
+                pst.setString(2, email);
+
+                result = pst.executeUpdate();
             }
         } catch (Exception e) {
             System.out.println(e);

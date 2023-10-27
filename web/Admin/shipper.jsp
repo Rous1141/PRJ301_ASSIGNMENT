@@ -19,7 +19,7 @@
                 <h1>Assign A Shipper To The Order</h1>
                 <form class='col s6' id="name" action="CentralController" method="post" >
                     <input type="hidden" name="action" value="admin"  />
-                    
+                    <input type="hidden" name="page" value="order"  />
                     <input type="hidden" name="page" value="shipper"  /> 
                     <input class=" col s6" id="icon_prefix" type="text" name="name" class="validate"  placeholder="Search By Name">           
                     <button class="btn waves-effect waves-light" type="submit" form="name"><i class="material-icons prefix">search</i></button>
