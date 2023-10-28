@@ -88,6 +88,9 @@
 
                 <button type="submit" class="btn waves-effect waves-light" type="submit">Update<i class="material-icons">system_update_alt</i></button>
             </form>
+                <br>
+                <br>
+                <br>
         </div>
                     <% 
                         }

@@ -21,6 +21,12 @@
         </script>   
     </head>
     <body>
+        <--<!-- WARNING!!! THIS PAGE IS ONLY UI COMPLETED, 
+           DUE TO SHIPPER FUNCTION IS NOT DONE, 
+           DO NOT ASSIGN ORDER TO SHIPPER
+           OR YOU MUST GO TO SSMS AND SWITCH ORDER TO TRUE MANUALLY
+           NOTE: 1 SHIPPER 1 ORDER
+        -->
         <div class="myPage col s8 offset-s1">
 
             <div class="myProfile">

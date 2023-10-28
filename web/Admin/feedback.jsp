@@ -52,7 +52,7 @@
                             <td><%= feed.getOrder_id()%></td>
                             <td><%= feed.getCustomer_id()%></td>
                             <td><%= feed.getFeedback_date()%></td>
-                            <td><%= feed.getRating()%></td>
+                            <td style="color: red"><%= feed.getRating()%></td>
                             <td>
                                 <ul class="collapsible" data-collapsible="accordion" style="color: white"> 
                                     <li> 

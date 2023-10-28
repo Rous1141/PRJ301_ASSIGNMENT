@@ -41,7 +41,7 @@ body {
   margin: auto;
   margin-top: 1%;
   overflow: auto;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.1);
   border: solid rgba(239, 83, 80,0.4) 5px;
   height: 90vh;
   transition: 0.5s;
@@ -65,10 +65,10 @@ body {
   border-radius: 5px;
   overflow: auto;
   text-align: center;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.1);
   border: solid rgba(239, 83, 80,0.4) 5px;
   height: 90vh;
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.1);
   transition: 0.5s;
 }
 
@@ -135,21 +135,4 @@ body {
     padding-top: 5%;
 }
 
-.myPage{
-  margin-top: 1%;
-  border-radius: 5px;
-  overflow: auto;
-  opacity: 40%;
-  background: rgb(255,255,255);
-  border: solid rgb(239, 83, 80) 5px;
-  height: 90vh;
-  
-  transition: 0.5s;
-}
-
-.myPage:hover{
-
-   opacity: 90%;
-   border: solid rgba(239, 83, 80, 1) 5px;
-} 
 

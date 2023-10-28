@@ -43,7 +43,7 @@
                     }
                 %>
                 <div class="nav-wrapper">
-                    <a href="#" class="brand-logo" style="margin-left: 2%">Welcome Admin <%= result.getName()%></a>
+                    <a class="brand-logo" style="margin-left: 2%">Welcome Admin <%= result.getName()%></a>
                     <a href="CentralController" class="out" style="margin-left: 2%">Log Out</a>
                 </div>
             </nav>
