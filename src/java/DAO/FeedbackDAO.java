@@ -62,6 +62,48 @@ public class FeedbackDAO {
 
         return result;
     }
+    
+    public static ArrayList<Feedbacks> getFeedbackByCusID(int cusID) throws Exception {
+        Connection con;
+
+        ArrayList<Feedbacks> result = new ArrayList<>();
+        try {
+            con = DatabaseConnection.makeConnection();
+            if (con != null) {
+                String sql = "SELECT [feedback_id]\n"
+                        + "      ,[feedback_content]\n"
+                        + "      ,[feedback_date]\n"
+                        + "      ,[rating]\n"
+                        + "      ,[ranking]\n"
+                        + "      ,[customer_id]\n"
+                        + "      ,[order_id]\n"
+                        + "  FROM [flower_shop].[dbo].[Feedback] \n"
+                        + " WHERE [customer_id] = ?";
+                PreparedStatement pts = con.prepareStatement(sql);
+                pts.setInt(1, cusID);
+                ResultSet rs = pts.executeQuery();
+                while (rs != null && rs.next()) {
+
+                    int feedback_id = rs.getInt("feedback_id");
+                    String feedback_content = rs.getString("feedback_content");
+                    java.util.Date feedback_date = rs.getDate("feedback_date");
+                    int rating = rs.getInt("rating");
+                    int ranking = rs.getInt("ranking");
+                    int customer_id = rs.getInt("customer_id");
+                    int order_id = rs.getInt("order_id");
+
+                    Feedbacks feed = new Feedbacks(feedback_id, feedback_content, feedback_date, rating, ranking, customer_id, order_id);
+
+                    result.add(feed);
+                }
+                con.close();
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+
+        return result;
+    }
 
     public static int CreateFeedback(
                 String feedback_content,
