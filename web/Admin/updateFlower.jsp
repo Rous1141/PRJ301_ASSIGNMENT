@@ -25,10 +25,10 @@
              // Follow camelCase Style for consistency!!!
              
              String flower = request.getParameter("flower");
-             if(flower==null){ request.setAttribute("role", "error");request.getRequestDispatcher("CentralController").forward(request, response); }
+             if(flower==null){ request.setAttribute("role", "error");request.getRequestDispatcher("CentralController").forward(request, response); } //send to Error Page
              String id = request.getParameter("flower");
              ArrayList<Flowers> listFlo = DAO.FlowerDAO.getFlowerByID(id);
-             if(listFlo.isEmpty()){request.setAttribute("role", "error");request.getRequestDispatcher("CentralController");}
+             if(listFlo.isEmpty()){request.setAttribute("role", "-1");request.getRequestDispatcher("CentralController");} //send to Error Page
              else{
              for(Flowers flo : listFlo){
         %>
@@ -36,7 +36,7 @@
             <h1>Flower Form</h1>
             <form action="CentralController" method="post">
                 <input  type="hidden" name="action" value="admin"  />
-                <input type="hidden" name="page" value="checkUpdate"/> 
+                <input type="hidden" name="page" value="checkUpdateFlo"/> 
                 <!-- Flower ID (int) -->
                 <label for="flowerId">Flower ID</label>
                 <input type="text" name="flowerId" id="flowerId" value='<%= flo.getFlower_id() %>' ><br/>
@@ -50,10 +50,10 @@
                 <input type="text" name="flowerColor" id="flowerColor" value='<%= flo.getFlower_color() %>'><br/>
 
 
-                <label for="flowerPrice">Flower Price :</label>
+                <label for="flowerPrice">Flower Price</label>
                 <input type="text" name="flowerPrice" id="flowerPrice" value='<%= flo.getFlower_price() %>'><br/>
                 
-                <label for="flowerQuan">Quantity :</label>
+                <label for="flowerQuan">Quantity</label>
                 <input type="text" name="flowerQuantity" id="flowerQuan" value='<%= flo.getQuantity()%>'><br/>
 
 

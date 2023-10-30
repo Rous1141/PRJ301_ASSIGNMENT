@@ -33,7 +33,7 @@
             if (result != null) {
                 session = request.getSession(); // GET CURRENT USER SESSION
                 session.setAttribute("role", result.getRole());
-
+                session.setAttribute("user", result);
                 switch (result.getRole()) {
                     case "AD": {
                         role = "admin";

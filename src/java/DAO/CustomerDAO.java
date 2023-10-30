@@ -4,9 +4,6 @@
  */
 package DAO;
 
-import DTO.Account;
-import DTO.Customers;
-
 import DTO.Customers;
 import java.sql.Connection;
 import java.sql.Date;
@@ -148,6 +145,7 @@ public class CustomerDAO {
         return kq;
     }
 
+
     public static int CreateCus(
             String email,
             String name,
@@ -208,5 +206,32 @@ public class CustomerDAO {
         }
         return result;
     }
+
+
+    public static int updateCustomerStatus(int ID, int flag, boolean status) throws Exception {
+        int kq = 0;
+        try{
+            Connection cn = DatabaseConnection.makeConnection();
+        
+        if (cn != null) {
+            String sql = "UPDATE [dbo].[Customer]\n"
+                    + "   SET \n"
+                    + "       [status] = ?\n"
+                    + "      ,[flag] = ?\n"
+                    + " WHERE [customer_id] = ?";
+    
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setBoolean(1, status);
+            pst.setInt(2, flag);
+            pst.setInt(3, ID);
+            kq = pst.executeUpdate();
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return kq;
+    }
+    
+    
 
 }

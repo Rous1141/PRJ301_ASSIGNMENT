@@ -2,6 +2,9 @@
 
 
 
+<%@page import="DAO.AdminDAO"%>
+<%@page import="DTO.Admin"%>
+<%@page import="DTO.Login"%>
 <%-- 
     Document   : adminPage
     Created on : Oct 9, 2023, 8:39:45 PM
@@ -18,7 +21,8 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="css/materialize.css" rel="stylesheet" type="text/css"/>
         <link href="css/adminCss.css" rel="stylesheet" type="text/css">
-       
+        <link href="css/orderAdmin.css" rel="stylesheet" type="text/css"/>
+
         <title>Admin</title>
     </head>
 
@@ -26,15 +30,20 @@
         <div class="background">
             <nav>
                 <%
-                     String role = (String) session.getAttribute("role");
-                     if(role==null){role="-1";}
-                     if(!role.equalsIgnoreCase("AD")){
+                    String role = (String) session.getAttribute("role");
+                    Login user = (Login) session.getAttribute("user");
+                    Admin result = AdminDAO.getAccount(user.getEmail());
+
+                    if (role == null) {
+                        role = "-1";
+                    }
+                    if (!role.equalsIgnoreCase("AD") || result == null) {
                         request.setAttribute("role", "-1"); //Send You To Error Page
                         request.getRequestDispatcher("../CentralController").forward(request, response);
                     }
                 %>
                 <div class="nav-wrapper">
-                    <a href="#" class="brand-logo" style="margin-left: 2%">Welcome Admin</a>
+                    <a href="#" class="brand-logo" style="margin-left: 2%">Welcome Admin <%= result.getName()%></a>
                     <a href="CentralController" class="out" style="margin-left: 2%">Log Out</a>
                 </div>
             </nav>
@@ -74,50 +83,64 @@
                 </form>
                 <%
                     String adPage = request.getParameter("page"); //Making it feel like the Page switch seemlessly - which it is NOT. This is NOT REACT, this is a hack (don't do what I do)
-                    String attPage = (String) request.getAttribute("page");  //get Atributte to get quickly to Other Page Automatically after CRUD
-                    
+                    String attPage = (String) request.getAttribute("page");  //Making it feel like the Page switch seemlessly - which it is NOT. This is NOT REACT, this is a hack (don't do what I do)
+
+//get Atributte to get quickly to Other Page Automatically after CRUD
                     if (attPage != null) {
                         adPage = attPage;
                     }
                     if (adPage == null) {
                         adPage = "";
                     }
-                    
+
                     switch (adPage) {
                         case "": {
                 %> <%@include file="dashboard.jsp" %> <%                                    ;
-                        ;break;
+                        ;
+                        break;
                     }
 
                     case "profile": {
-                %> <%@include file="profile.jsp" %>  <%
-
-                        ;break;
+                %> <%@include file="customerProfile.jsp" %>  <%                        ;
+                        break;
                     }
                     case "flower": {
-                %> <%@include file="flower.jsp" %> <%
-                        ;break;
-                   }
-                    case "order": {
-                %> <%@include file="order.jsp" %> <%
+                %> <%@include file="flower.jsp" %> <%                        ;
                         break;
-}
+                    }
+                    case "order": {
+                %> <%@include file="order.jsp" %> <%                        break;
+                    }
+
+                    case "shipper": {
+                %> <%@include file="shipper.jsp" %> <%                        break;
+                    }
+
+                    case "orderDetail": {
+                %> <%@include file="orderDetail.jsp" %> <%                        break;
+                    }
 
                     case "feedback": {
                 %> <%@include file="feedback.jsp" %> <%
-                            break;
-                        }
-                        case "flowerupdate": {
-                %> <%@include file="updateFlower.jsp" %> <%
-                            break;
-                        }
+                        break;
+                    }
+                    case "flowerupdate": {
+                %> <%@include file="updateFlower.jsp" %> <%                        break;
+                    }
 
-                        case "checkUpdate": {
-                %> <%@include file="checkUpdateFlo.jsp" %> <%
-                            break;
-                        }
+                    case "checkUpdateFlo": {
+                %> <%@include file="checkUpdateFlo.jsp" %> <%                        break;
+                    }
 
-                      default:{
+                    case "checkUpdateOrder": {
+                %> <%@include file="updateOrder.jsp" %> <%                        break;
+                    }
+
+                    case "checkUpdateStatus": {
+                %> <%@include file="checkUpdateStatus.jsp" %> <%                        break;
+                    }
+
+                    default: {
                 %> <%@include file="dashboard.jsp" %> <%
                             break;
                         }
@@ -126,6 +149,6 @@
                 %>
             </div>
         </div>    
-            
+
     </body>
 </html>

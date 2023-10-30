@@ -24,8 +24,8 @@
                     int category_id = Integer.parseInt(request.getParameter("categoryId"));
                     String image = request.getParameter("image");
                     int quantity = Integer.parseInt( request.getParameter("flowerQuantity"));
-                    int result = FlowerDAO.updateFlower(flower_id, flower_name, flower_color, flower_price, status, import_date, category_id, image,quantity);
-                    if(result != 0){request.setAttribute("role", "admin");request.setAttribute("page", "flower");request.getRequestDispatcher("../CentralController").forward(request, response); }
+                    int resultFlo = FlowerDAO.updateFlower(flower_id, flower_name, flower_color, flower_price, status, import_date, category_id, image,quantity);
+                    if(resultFlo != 0){request.setAttribute("role", "admin");request.setAttribute("page", "flower");request.getRequestDispatcher("../CentralController").forward(request, response); }
                     else{request.setAttribute("role", "error");request.getRequestDispatcher("CentralController").forward(request, response); }
         %>
     </body>
