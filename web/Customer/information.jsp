@@ -115,18 +115,19 @@
     </head>
     <body>
         <div class="container">
-            <h1>Information</h1>
+            <h1>Personal Information</h1>
             <form action="CentralController" method="post" >
-                <input type="hidden" name="action" value="signup" >
+                <% String email = request.getParameter("txtemail"); %>
+               <input type="hidden" name="action"  value="checkSignUp">
                 <div class="information">
-                    <input type="text" name="txtname" required="" placeholder="Name" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px;}">
-                    <input type="date" name="txtbirthdate" required="" placeholder="Birthdate" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px; border: none;}">
-                    <input type="tel" name="txtphone" required="" placeholder="Phone" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px;}">
-                    <input type="text" name="txtaddress" required="" placeholder="Address" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px;}">
+                    <input  type="hidden" name="txtemail"  value="<%= email %>" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px;}">
+                    <input type="text" name="name" required="" placeholder="Name" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px;}">
+                    <input type="date" name="birth" required="" placeholder="Birthdate" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px; border: none;}">
+                    <input type="text" name="phone" required="" placeholder="Phone" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px;}">
+                    <input type="text" name="address" required="" placeholder="Address" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px;}">
                 </div>
-                <input type="submit" value="Create Pesonal Information">
+                <input name="btnAction" type="submit" value="Register">
             </form>
-            
         </div>
     </body>
 </html>

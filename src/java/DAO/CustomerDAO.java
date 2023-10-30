@@ -154,7 +154,6 @@ public class CustomerDAO {
             String birth_date,
             String phone_number,
             String address,
-            
             Boolean status,
             String orders,
             int flag

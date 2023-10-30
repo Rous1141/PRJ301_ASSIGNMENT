@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class CentralController extends HttpServlet {
             String SignUp_Page = "/Customer/signupPage.jsp";
+            String Info_SignUp_Page = "/Customer/information.jsp";
+            String Check_Sign_Up = "/Customer/checkSignUp.jsp";
             String LogIn_Page = "/Components/loginPage.jsp";
             String Shop_Page = "/Customer/shopPage.jsp";
             String Admin_Page = "/Admin/adminPage.jsp";
@@ -68,6 +70,8 @@ public class CentralController extends HttpServlet {
                 case "welcome":{request.getRequestDispatcher(LogIn_Page).forward(request, response);break;}
                 case "shop":{request.getRequestDispatcher(Shop_Page).forward(request, response);break;}
                 case "signup":{request.getRequestDispatcher(SignUp_Page).forward(request, response);break;}
+                case "information":{request.getRequestDispatcher(Info_SignUp_Page).forward(request, response);break;}
+                case "checkSignUp":{request.getRequestDispatcher(Check_Sign_Up).forward(request, response);break;}
                 case "cart":{request.getRequestDispatcher(Cart_Page).forward(request, response);break;}
                 case "history":{request.getRequestDispatcher(History_Page).forward(request, response);break;}
                 case "admin":{request.getRequestDispatcher(Admin_Page).forward(request, response);break;}

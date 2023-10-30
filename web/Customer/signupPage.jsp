@@ -126,12 +126,12 @@ and open the template in the editor.
         <div class="container">
             <h1>Sign Up</h1>
             <form action="CentralController" method="post" >
-                <input type="hidden" name="action" value="signup" >
+                 <input type="hidden" name="action"  value="checkSignUp">
                 <div class="signup">
                     <p><input type="text" name="txtemail" required=""  placeholder="Email"></p>
                     <p><input type="password" id="txtpassword" name="txtpassword" required="" placeholder="Password"></p>
                     <p><input type="password" id="txtrepassword" name="txtrepassword" required="" placeholder="Re-Password"></p>
-                    <p><input type="submit" value="register" onclick="return checkPassword()"></p>
+                    <p><input type="submit" name="btnAction" value="Sign Up" onclick="return checkPassword()"></p>
                     <%@include file="checkSignUp.jsp" %>
                 </div>
             </form>

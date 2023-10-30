@@ -23,6 +23,7 @@
             String email = request.getParameter("email");
             String pass = request.getParameter("pass");
             Login result = LoginDAO.LogIn(email, pass);
+            String message = (String) request.getAttribute("message");
             ArrayList<Customers> user = new ArrayList<>();
 
             user = CustomerDAO.getCustomersByEmail(email);
@@ -55,21 +56,32 @@
         <h3>User Is Banned. See You In 2 Weeks!</h3>
         <%
                             break;
-                        }else{
-                    request.setAttribute("role", role);
-                    request.getRequestDispatcher(URL).forward(request, response);
-}
+                        } else {
+                            request.setAttribute("role", role);
+                            request.getRequestDispatcher(URL).forward(request, response);
+                        }
                     }
-                   
+
                     break;
                 }
             }
 
         } else {
             if (email == null && pass == null) {
-        %>
-        <h3 style="color: yellow">Please Log In To Continue</h3>
-        <%
+                if(message == null){message = "";}
+                switch (message) {
+                        case "createSuccess": {
+                    %>
+                    <h3 style="color: green">Register Complete! Please Log In With Your New Account</h3>
+                    <%
+                        break;
+                        }
+                        default: {
+                    %>
+                    <h3 style="color: yellow">Please Log In To Continue</h3>
+                    <%
+                            }
+            }
         } else {
 
         %>
