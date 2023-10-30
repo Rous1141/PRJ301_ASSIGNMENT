@@ -1,27 +1,17 @@
 <%-- 
-    Document   : signup
-    Created on : Oct 9, 2023, 8:39:11 PM
-    Author     : hendrix
+    Document   : Information
+    Created on : Oct 30, 2023, 9:38:27 AM
+    Author     : bolic
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
         <style>
-            /*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-            */
-            /* 
-                Created on : Oct 19, 2023, 10:13:57 AM
-                Author     : bolic
-            */
+     
 
             @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
             @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
@@ -64,7 +54,7 @@ and open the template in the editor.
                 width: 65%;
                 height: 30%;
             }
-            .signup{
+            .information{
 
                 border-radius: 6px;
 
@@ -110,34 +100,34 @@ and open the template in the editor.
                 font-size: 15px;
             }
 
-        </style>
-        <script>
-            function checkPassword() {
-                if (document.getElementById("txtpassword").value !== document.getElementById("txtrepassword").value) {
-                    alert("password is invalid");
-                    return false;
-                }
-                return true;
-            }
+            .information {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 20px;
+                
 
-        </script>
+            }
+            .information input {
+                display: block;
+                margin-bottom: 10px;
+            }
+        </style>
     </head>
     <body>
         <div class="container">
-            <h1>Sign Up</h1>
+            <h1>Personal Information</h1>
             <form action="CentralController" method="post" >
-                 <input type="hidden" name="action"  value="checkSignUp">
-                <div class="signup">
-                    <p><input type="text" name="txtemail" required=""  placeholder="Email"></p>
-                    <p><input type="password" id="txtpassword" name="txtpassword" required="" placeholder="Password"></p>
-                    <p><input type="password" id="txtrepassword" name="txtrepassword" required="" placeholder="Re-Password"></p>
-                    <p><input type="submit" name="btnAction" value="Sign Up" onclick="return checkPassword()"></p>
-                    <%@include file="checkSignUp.jsp" %>
+                <% String email = request.getParameter("txtemail"); %>
+               <input type="hidden" name="action"  value="checkSignUp">
+                <div class="information">
+                    <input  type="hidden" name="txtemail"  value="<%= email %>" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px;}">
+                    <input type="text" name="name" required="" placeholder="Name" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px;}">
+                    <input type="date" name="birth" required="" placeholder="Birthdate" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px; border: none;}">
+                    <input type="text" name="phone" required="" placeholder="Phone" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px;}">
+                    <input type="text" name="address" required="" placeholder="Address" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px;}">
                 </div>
+                <input name="btnAction" type="submit" value="Register">
             </form>
-            
         </div>
-
     </body>
 </html>
-
