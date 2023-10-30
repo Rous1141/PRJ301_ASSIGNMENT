@@ -33,7 +33,7 @@
 
                 <div class="col s3" >
                     <div class="card">
-                        <div class="card-image">
+                        <div class="card-image" >
                             <img src="<%= flower.getImage()%>">
 
                         </div>
@@ -45,7 +45,8 @@
                         </div>
                         <div class="card-action">
 <!--                            <a href="#">Add To Cart <i class="material-icons" style="padding-top: 5px ">add_box</i></a>-->
-                            <button class="btn waves-effect waves-light" type="submit" name="action">Add To Cart
+                            <button class="btn waves-effect waves-light" type="submit" name="action">
+                                Add To Cart
                                 <i class="material-icons right">add_box</i>
                             </button>
                         </div>
