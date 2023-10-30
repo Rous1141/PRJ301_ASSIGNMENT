@@ -15,7 +15,7 @@ public class DatabaseConnection {
     public static Connection makeConnection() throws Exception{
         Connection cn=null;
 
-        String IP="localhost";   
+        String IP="10.211.55.2";   
         String instanceName="";
 
         String port="1433";
