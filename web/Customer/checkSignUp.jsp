@@ -4,6 +4,8 @@
     Author     : bolic
 --%>
 
+<%@page import="java.util.regex.Matcher"%>
+<%@page import="java.util.regex.Pattern"%>
 <%@page import="DAO.AccountDAO"%>
 <%@page import="DTO.Account"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -20,7 +22,19 @@
         </style>
     </head>
     <body>
-
+        <%!
+            public boolean stringInfo(String parameter, String reRex) {
+                boolean flag = true;
+                if (reRex.equalsIgnoreCase("none") == true) {
+                    // If You don't want to check for regex -type 'none' in the second param
+                } else {
+                    Pattern rules = Pattern.compile(reRex);
+                    Matcher checkRules = rules.matcher(parameter);
+                    flag = checkRules.matches();
+                }
+                return flag;
+            }
+        %>
 
         <%
             String button = request.getParameter("btnAction");
@@ -30,23 +44,31 @@
             switch (button) {
                 case "Sign Up": {
                     String email = request.getParameter("txtemail");
-                    
                     String password = request.getParameter("txtpassword");
-                    if (email != null && password != null) {
+                    boolean flagEmail = stringInfo(email, "^([\\w\\d]*)@(gmail)\\.com$");
+                    boolean flagPassword = stringInfo(password, "^[\\w\\d]{5,}$");
+                    //Validate if inputs are not match with requirement
+                    if (flagEmail == false) {
+                        request.setAttribute("emailError", "err");
+                    }
+                    if (flagPassword == false) {
+                        request.setAttribute("passwordError", "err");
+                    }
+                    if (flagEmail == false || flagPassword == false) {
+                        request.setAttribute("role", "signup");
+                        request.getRequestDispatcher("../CentralController").forward(request, response);
+                    } else {
                         try {
                             // Kiểm tra xem tài khoản đã tồn tại trong cơ sở dữ liệu chưa
                             Account account = AccountDAO.getAccount(email, password);
-
                             if (account != null) {
-        %>
-                                    <p class="notice">Username is already taken. Please choose another one.</p>
-                                    <a href='CentralController'>Return</a>
-        <%
+                                request.setAttribute("accountError", "err");
+                                request.setAttribute("role", "signup");
+                                request.getRequestDispatcher("../CentralController").forward(request, response);
                             } else {
                                 // Tên người dùng chưa tồn tại
                                 String role = "CS"; // Gán vai trò mặc định "CS"
                                 int result = AccountDAO.insertAccount(email, password, role);
-
                                 if (result > 0) {
                                     request.setAttribute("role", "information");
                                     request.getRequestDispatcher("../CentralController").forward(request, response);
@@ -55,14 +77,13 @@
                                 }
                             }
                         } catch (Exception e) {
-                            e.printStackTrace();
+                            out.print(e);
                         }
-                    } else {
-
                     }
+                    break;
                 }
                 case "Register": {
-                    
+
                     String email = request.getParameter("txtemail");
                     String name = request.getParameter("name");
                     String birthday = request.getParameter("birth");
@@ -70,20 +91,40 @@
                     String address = request.getParameter("address");
                     Boolean Status = true;
                     String order = "0";
-
                     int flag = 0;
 
-                    int result = DAO.CustomerDAO.CreateCus(email, name, birthday, phone, address, Status, order, flag);
-                    if (result > 0) {
-                        request.setAttribute("message", "createSuccess");
-                        request.setAttribute("role", "welcome");
+                    //Validate Them Inputs
+                    boolean flagName = stringInfo(name, "^[\\w\\s]{3,}$");
+                    if (flagName == false) {
+                        request.setAttribute("nameError", "err");
+                    }
+
+                    boolean flagPhone = stringInfo(phone, "^[\\d]{9}$");
+                    if (flagPhone == false) {
+                        request.setAttribute("phoneError", "err");
+                    }
+
+                    boolean flagAddress = stringInfo(address, "^[\\w\\d\\s]{10,}$");
+                    if (flagAddress == false) {
+                        request.setAttribute("addressError", "err");
+                    }
+                    
+                    if (flagName == false || flagPhone == false || flagAddress == false) {
+                        request.setAttribute("role", "information");
                         request.getRequestDispatcher("../CentralController").forward(request, response);
                     } else {
-                        out.print("Fail To Register Your Personal Infomation ");
+                        int result = DAO.CustomerDAO.CreateCus(email, name, birthday, phone, address, Status, order, flag);
+                        if (result > 0) {
+                            request.setAttribute("message", "createSuccess");
+                            request.setAttribute("role", "welcome");
+                            request.getRequestDispatcher("../CentralController").forward(request, response);
+                        } else {
+                            out.print("Fail To Register Your Personal Infomation ");
+                        }
                     }
+                    break;
                 }
             }
-
         %>
     </body>
 </html>

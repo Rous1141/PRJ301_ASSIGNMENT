@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Account Sign Up</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
@@ -62,7 +62,7 @@ and open the template in the editor.
                 top: 50%;
                 left: 50%;
                 width: 65%;
-                height: 30%;
+                height: 50vh;
             }
             .signup{
 
@@ -123,16 +123,28 @@ and open the template in the editor.
         </script>
     </head>
     <body>
+        <% 
+           String emailError = (String) request.getAttribute("emailError");
+           String passwordError = (String) request.getAttribute("passwordError");
+           String accountError = (String) request.getAttribute("accountError");
+            String ACCOUNT_ERROR = "ACCOUNT IS ALREADY EXIST!!!";
+            String EMAIL_ERROR = "Email Didn't Match Requirement";
+            String PASSWORD_ERROR = "Password Didn't Match Requirement";
+        %>
         <div class="container">
             <h1>Sign Up</h1>
             <form action="CentralController" method="post" >
                  <input type="hidden" name="action"  value="checkSignUp">
                 <div class="signup">
-                    <p><input type="text" name="txtemail" required=""  placeholder="Email"></p>
-                    <p><input type="password" id="txtpassword" name="txtpassword" required="" placeholder="Password"></p>
+                    <p><input type="text" name="txtemail" required=""  placeholder="Email"> *Must End With '@gmail.com'</p>
+                    <%if(emailError=="err"){%><p style='color:yellow'><%= EMAIL_ERROR %></p><%}%>
+                    <%if(accountError=="err"){%><p style='color:yellow'><%= ACCOUNT_ERROR %></p><%}%>
+                    <p><input type="password" id="txtpassword" name="txtpassword" required="" placeholder="Password"> *Must Be At Least 5 Characters</p>
+                    <%if(passwordError=="err"){%><p style='color:yellow'><%= PASSWORD_ERROR %></p><%}%>
                     <p><input type="password" id="txtrepassword" name="txtrepassword" required="" placeholder="Re-Password"></p>
                     <p><input type="submit" name="btnAction" value="Sign Up" onclick="return checkPassword()"></p>
-                    <%@include file="checkSignUp.jsp" %>
+                     
+                    
                 </div>
             </form>
             

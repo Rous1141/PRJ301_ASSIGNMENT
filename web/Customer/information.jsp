@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Personal Info</title>
         <style>
      
 
@@ -52,7 +52,7 @@
                 top: 50%;
                 left: 50%;
                 width: 65%;
-                height: 30%;
+                height: 50%;
             }
             .information{
 
@@ -114,6 +114,15 @@
         </style>
     </head>
     <body>
+        <%
+            String nameError = (String) request.getAttribute("nameError");
+            String phoneError = (String) request.getAttribute("phoneError");
+            String addressError = (String) request.getAttribute("addressError");
+            String NAME_ERROR = "Name didn't match requirement ->";
+            String PHONE_ERROR = "Phone didn't match requirement ->";
+            String ADDRESS_ERROR = "Address didn't match requirement ->"; 
+            
+            %>
         <div class="container">
             <h1>Personal Information</h1>
             <form action="CentralController" method="post" >
@@ -121,10 +130,16 @@
                <input type="hidden" name="action"  value="checkSignUp">
                 <div class="information">
                     <input  type="hidden" name="txtemail"  value="<%= email %>" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px;}">
+                   
                     <input type="text" name="name" required="" placeholder="Name" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px;}">
+                     <%if(nameError=="err"){%><p style='color:yellow'><%= NAME_ERROR %></p><%}%><p>*Must Be At Least 3 Characters</p>
                     <input type="date" name="birth" required="" placeholder="Birthdate" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px; border: none;}">
+                    
                     <input type="text" name="phone" required="" placeholder="Phone" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px;}">
+                     <%if(phoneError=="err"){%><p style='color:yellow'><%= PHONE_ERROR %></p><%}%><p>*Must Be 9 Digits</p>
                     <input type="text" name="address" required="" placeholder="Address" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px;}">
+                     <%if(addressError=="err"){%><p style='color:yellow'><%= ADDRESS_ERROR %></p><%}%><p>*Must Be At Least 10 Characters</p>
+                
                 </div>
                 <input name="btnAction" type="submit" value="Register">
             </form>
