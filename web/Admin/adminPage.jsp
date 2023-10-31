@@ -32,15 +32,15 @@
                 <%
                     String role = (String) session.getAttribute("role");
                     Login user = (Login) session.getAttribute("user");
-                    Admin result = AdminDAO.getAccount(user.getEmail());
-
-                    if (role == null) {
+                     if (role == null || user == null) {
                         role = "-1";
                     }
-                    if (!role.equalsIgnoreCase("AD") || result == null) {
+                    if (!role.equalsIgnoreCase("AD")) {
                         request.setAttribute("role", "-1"); //Send You To Error Page
                         request.getRequestDispatcher("../CentralController").forward(request, response);
                     }
+                    Admin result = AdminDAO.getAccount(user.getEmail());
+                    
                 %>
                 <div class="nav-wrapper">
                     <a href="#" class="brand-logo" style="margin-left: 2%">Welcome Admin <%= result.getName()%></a>
@@ -123,6 +123,12 @@
                     case "feedback": {
                 %> <%@include file="feedback.jsp" %> <%
                         break;
+                    }
+                     case "createFlower": {
+                %> <%@include file="createFlower.jsp" %> <%                        break;
+                    }
+                        case "checkCreateFlower": {
+                %> <%@include file="checkCreateFlower.jsp" %> <%                        break;
                     }
                     case "flowerupdate": {
                 %> <%@include file="updateFlower.jsp" %> <%                        break;

@@ -21,40 +21,26 @@
         <title>Flower Form</title>
     </head>
     <body>
-        <%
-             // Follow camelCase Style for consistency!!!
-             
-             String flower = request.getParameter("flower");
-             if(flower==null){ request.setAttribute("role", "error");request.getRequestDispatcher("CentralController").forward(request, response); } //send to Error Page
-             String id = request.getParameter("flower");
-             ArrayList<Flowers> listFlo = DAO.FlowerDAO.getFlowerByID(id);
-             if(listFlo.isEmpty()){request.setAttribute("role", "-1");request.getRequestDispatcher("CentralController");} //send to Error Page
-             else{
-             for(Flowers flo : listFlo){
-        %>
+        
         <div class="myPage col s8 offset-s1">
-            <h1>Flower Form</h1>
-            <form action="CentralController" method="post" style="margin-bottom: 2%">
-                <input  type="hidden" name="action" value="admin"  />
-                <input type="hidden" name="page" value="checkUpdateFlo"/> 
+            <h1>New Flower</h1>
+            <form action="CentralController" method="post" style='margin-bottom: 2%'>
+                <input  type="hidden" name="action" value="admin" />
+                <input type="hidden" name="page" value="checkCreateFlower"/> 
                 <!-- Flower ID (int) -->
-               
-                <input type="hidden" name="flowerId" id="flowerId" value='<%= flo.getFlower_id() %>' ><br/>
-
-
                 <label for="flowerName">Flower Name</label>
-                <input type="text" name="flowerName" id="flowerName" value='<%= flo.getFlower_name()%>' ><br/>
+                <input type="text" name="flowerName" id="flowerName" value='' ><br/>
 
 
                 <label for="flowerColor">Flower Color</label>
-                <input type="text" name="flowerColor" id="flowerColor" value='<%= flo.getFlower_color() %>'><br/>
+                <input type="text" name="flowerColor" id="flowerColor" value=''><br/>
 
 
                 <label for="flowerPrice">Flower Price</label>
-                <input type="text" name="flowerPrice" id="flowerPrice" value='<%= flo.getFlower_price() %>'><br/>
+                <input type="text" name="flowerPrice" id="flowerPrice" value=''><br/>
                 
                 <label for="flowerQuan">Quantity</label>
-                <input type="text" name="flowerQuantity" id="flowerQuan" value='<%= flo.getQuantity()%>'><br/>
+                <input type="text" name="flowerQuantity" id="flowerQuan" value=''><br/>
 
 
                 <label for="status">Status</label>
@@ -65,7 +51,7 @@
 
 
                 <label for="importDate">Import Date</label>
-                <input type="date" name="importDate" id="importDate" value='<%= flo.getImport_date() %>' ><br/>
+                <input type="date" name="importDate" id="importDate" value='' ><br/>
 
                 <label for="categoryId">Category</label>
                 <select name='categoryId'>
@@ -84,15 +70,11 @@
 
                 <br/>
                 <label for="image">Image URL</label>
-                <input type="text" name="image" id="image" value='<%= flo.getImage() %>' >
+                <input type="text" name="image" id="image" value='' >
 
-                <button type="submit" class="btn waves-effect waves-light" type="submit">Update<i class="material-icons">system_update_alt</i></button>
+                <button type="submit" class="btn waves-effect waves-light" type="submit">Create<i class="material-icons">system_update_alt</i></button>
             </form>
         </div>
-                    <% 
-                        }
-                        }
-                    %>
         <script>
             $(document).ready(function () {
                 $("select").material_select();

@@ -30,6 +30,11 @@
                     <input class=" col s6"  id="icon_prefix" type="text" name="name" class="validate"  placeholder="Search By Name">           
                     <button class="btn waves-effect waves-light" type="submit" form="name"><i class="material-icons prefix">search</i></button>
                 </form>
+                <form class='form col s3' id="create" action="CentralController" method="post" >
+                    <input  type="hidden" name="action" value="admin"  />
+                    <input type="hidden" name="page" value="createFlower"  /> 
+                    <button class="btn waves-effect waves-light" type="submit" form="create">Create New Flower</button>
+                </form>
 
                 <div class='table col s12'>  
                     <table class="highlight">
