@@ -29,7 +29,7 @@
             user = CustomerDAO.getCustomersByEmail(email);
 
             String URL = "../CentralController";
-            String role = "";
+            String role = "error";
             if (result != null) {
                 session = request.getSession(); // GET CURRENT USER SESSION
                 session.setAttribute("role", result.getRole());

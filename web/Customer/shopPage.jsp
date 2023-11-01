@@ -18,6 +18,7 @@
         <link href="css/shopPage.css" rel="stylesheet">
 
         <title>Shopping</title>
+
     </head>
     <body>
         <%@include file="../Components/navBar.jsp" %> 
@@ -26,39 +27,81 @@
 
                 <%
                     ArrayList<Flowers> result = new ArrayList<>();
-                    result = FlowerDAO.getFlower();
-                    for (Flowers flower : result) {
+                    String name = request.getParameter("floName");
+                    if (name == null) {
+                        result = FlowerDAO.getFlower();
+                        for (Flowers flower : result) {
                 %>
 
+                <form method="POST" action='CentralController'>
+                    <input type='hidden' name='ID' value='<%= flower.getFlower_id()%>'>
+                    <input type='hidden' name='action' value='shop'>
+                    <div class="col s3" >
+                        <div class="card">
+                            <div class="card-image" style='width:  auto;height: 300px'>
+                                <img src="<%= flower.getImage()%>">
 
-                <div class="col s3" >
-                    <div class="card">
-                        <div class="card-image" >
-                            <img src="<%= flower.getImage()%>">
-
-                        </div>
-                        <div class="card-content">
-                            <span class="card-title"><%= flower.getFlower_name()%></span>
-                            <p>Import Date: <%= flower.getImport_date()%></p>
-                            <p>Color: <%= flower.getFlower_color()%></p>
-                            <p class="price"><%= flower.getFlower_price()%>$</p>
-                        </div>
-                        <div class="card-action">
-<!--                            <a href="#">Add To Cart <i class="material-icons" style="padding-top: 5px ">add_box</i></a>-->
-                            <button class="btn waves-effect waves-light" type="submit" name="action">
-                                Add To Cart
-                                <i class="material-icons right">add_box</i>
-                            </button>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title"><%= flower.getFlower_name()%></span>
+                                <p>Import Date: <%= flower.getImport_date()%></p>
+                                <p>Color: <%= flower.getFlower_color()%></p>
+                                <p class="price"><%= flower.getFlower_price()%>$</p>
+                            </div>
+                            <div class="card-action">                          
+                                <button class="btn waves-effect waves-light" type="submit">
+                                    Add To Cart
+                                    <i class="material-icons right">add_box</i>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-
+                </form> 
 
                 <%
                     }
+                } else {
+                    result = FlowerDAO.getFlowerByName(name);
+                    if (result.isEmpty()) {
+                %> 
+                <h1 style='color: #f4511e ;text-align: center;'>NO FLOWER MATCHES THAT SEARCH!!!</h1>
+                <%
+                } else {
+                    for (Flowers flower : result) {
                 %>
+
+                <form method="POST" action='CentralController'>
+                    <input type='hidden' name='ID' value='<%= flower.getFlower_id()%>'>
+                    <input type='hidden' name='action' value='shop'>
+                    <div class="col s3" >
+                        <div class="card">
+                            <div class="card-image" style='width:  auto;height: 300px'>
+                                <img src="<%= flower.getImage()%>">
+
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title"><%= flower.getFlower_name()%></span>
+                                <p>Import Date: <%= flower.getImport_date()%></p>
+                                <p>Color: <%= flower.getFlower_color()%></p>
+                                <p class="price"><%= flower.getFlower_price()%>$</p>
+                            </div>
+                            <div class="card-action">                          
+                                <button class="btn waves-effect waves-light" type="submit">
+                                    Add To Cart
+                                    <i class="material-icons right">add_box</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form> 
+                <%
+                            }
+                        }
+                    }
+                %> 
             </div>
         </div>
+        <%@include file="../Customer/addToCart.jsp" %>
         <%@include file="../Components/footer.jsp" %> 
     </body>
 </html>

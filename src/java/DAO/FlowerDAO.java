@@ -62,6 +62,49 @@ public class FlowerDAO {
 
         return result;
     }
+    
+    public static Flowers getFlowerById(int ID) {
+        Flowers result =null;
+         try {
+            Connection con = DatabaseConnection.makeConnection();
+            if (con != null) {
+                String sql = "SELECT [flower_id]\n"
+                        + "      ,[flower_name]\n"
+                        + "      ,[flower_color]\n"
+                        + "      ,[flower_price]\n"
+                        + "      ,[status]\n"
+                        + "      ,[import_date]\n"
+                        + "      ,[category_id]\n"
+                        + "      ,[image]\n"
+                        + "      ,[quantity]\n"
+                        + "  FROM [flower_shop].[dbo].[Flower]\n"
+                        + "  where [flower_id] = ? ";
+
+                PreparedStatement pts = con.prepareStatement(sql);
+                pts.setInt(1, ID);
+                ResultSet rs = pts.executeQuery();
+                while (rs != null && rs.next()) {
+
+                    int flower_id = rs.getInt("flower_id");
+                    String flower_name = rs.getString("flower_name");
+                    String flower_color = rs.getString("flower_color");
+                    int flower_price = rs.getInt("flower_price");
+                    boolean status = rs.getBoolean("status");
+                    Date import_date = rs.getDate("import_date");
+                    int category_id = rs.getInt("category_id");
+                    String image = rs.getString("image");
+                    int quantity = rs.getInt("quantity");
+
+                    result = new Flowers(flower_id, flower_name, flower_color, flower_price, status, import_date, category_id, image, quantity);
+                }
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(FlowerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return result;
+    }
 
     public static ArrayList<Flowers> getFlowerByName(String name) {
         ArrayList<Flowers> result = new ArrayList<>();

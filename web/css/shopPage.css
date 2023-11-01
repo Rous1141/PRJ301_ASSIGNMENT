@@ -18,7 +18,7 @@ and open the template in the editor.
 .price{
     color: #f4511e ;
     font-size: 30px;
-    
+    text-align: center;
     
 }
 .card-image img {
