@@ -29,7 +29,7 @@
                     <ul class="button hide-on-med-and-down">
                         <li class='nav'><button class='waves-effect waves-light btn-large' type='submit' name="action" value='history'><i class="material-icons">filter_list</i></button></li>
                         <li class='nav'><button class='waves-effect waves-light btn-large' type='submit' name="action" value='cart'><i class="material-icons">shopping_cart</i></button></li>
-                        <li class='nav'><button class='waves-effect waves-light btn-large' type='submit' name="action" value='history'><i class="material-icons">account_circle</i></button></li>
+                        <li class='nav'><button class='waves-effect waves-light btn-large' type='submit' name="action" value='profile'><i class="material-icons">account_circle</i></button></li>
                     </ul>
                 </form>
             </div>

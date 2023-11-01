@@ -26,7 +26,7 @@
             String message = (String) request.getAttribute("message");
             ArrayList<Customers> user = new ArrayList<>();
 
-            user = CustomerDAO.getCustomersByEmail(email);
+            
 
             String URL = "../CentralController";
             String role = "error";
@@ -48,15 +48,17 @@
                         break;
                     }
                     case "CS": {
+                        user = CustomerDAO.getCustomersByEmail(email);
                         role = "shop";
                         for (Customers cus : user) {
                             if (cus.getStaus() != true) {
-                                role = "welcome";
+                                role = "welcome"; //send you back to Login Page
         %>
         <h3>User Is Banned. See You In 2 Weeks!</h3>
         <%
                             break;
                         } else {
+                            request.setAttribute("user", user);
                             request.setAttribute("role", role);
                             request.getRequestDispatcher(URL).forward(request, response);
                         }
