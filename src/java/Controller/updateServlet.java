@@ -47,12 +47,8 @@ public class updateServlet extends HttpServlet {
             if (item != null) {
 
                 for (Flowers flo : item.keySet()) {
-                    out.println("<h1>"+item.get(flo)+"</h1>");
-                    if (flo.getFlower_id() == id)
-                    {
-                        out.println("<h1>"+flo.getFlower_id()+"</h1>");
+                    if (flo.getFlower_id() == id) {
                         if (action.equalsIgnoreCase("Update")) {
-
                             item.put(flo, newQuantity);
                         } else {
                             item.remove(flo);
@@ -63,7 +59,7 @@ public class updateServlet extends HttpServlet {
             }
             request.setAttribute("role", "cart");
             request.getRequestDispatcher("CentralController").forward(request, response);
-           // response.sendRedirect("viewCart.jsp");
+            // response.sendRedirect("viewCart.jsp");
         }
     }
 

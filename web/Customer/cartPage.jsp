@@ -40,6 +40,8 @@
             </tr>
 
             <%                for (Flowers flower : flowerList.keySet()) {
+                                if(flowerList.get(flower)>flower.getQuantity()){
+                                flowerList.put(flower,flower.getQuantity());}
                                 Quantity += (flower.getFlower_price() * flowerList.get(flower));
             %>
             
@@ -49,7 +51,9 @@
                     <td><%= flower.getFlower_price()%></td>
                     <td>
                         <form id="<%= flower.getFlower_id()%>" action='updateServlet' method='POST'> 
+                            
                         <input type="number" name="quantity" value="<%= flowerList.get(flower)%>" min="1" max="<%= flower.getQuantity() %>">
+                        
                          <input type='hidden' name='ID' value='<%= flower.getFlower_id() %>'>
                         </form>
                     </td>
