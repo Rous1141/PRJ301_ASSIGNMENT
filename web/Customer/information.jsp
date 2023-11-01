@@ -1,27 +1,17 @@
 <%-- 
-    Document   : signup
-    Created on : Oct 9, 2023, 8:39:11 PM
-    Author     : hendrix
+    Document   : Information
+    Created on : Oct 30, 2023, 9:38:27 AM
+    Author     : bolic
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Account Sign Up</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Personal Info</title>
         <style>
-            /*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-            */
-            /* 
-                Created on : Oct 19, 2023, 10:13:57 AM
-                Author     : bolic
-            */
+     
 
             @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
             @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
@@ -62,9 +52,9 @@ and open the template in the editor.
                 top: 50%;
                 left: 50%;
                 width: 65%;
-                height: 50vh;
+                height: 50%;
             }
-            .signup{
+            .information{
 
                 border-radius: 6px;
 
@@ -110,46 +100,49 @@ and open the template in the editor.
                 font-size: 15px;
             }
 
-        </style>
-        <script>
-            function checkPassword() {
-                if (document.getElementById("txtpassword").value !== document.getElementById("txtrepassword").value) {
-                    alert("password is invalid");
-                    return false;
-                }
-                return true;
-            }
+            .information {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 20px;
+                
 
-        </script>
+            }
+            .information input {
+                display: block;
+                margin-bottom: 10px;
+            }
+        </style>
     </head>
     <body>
-        <% 
-           String emailError = (String) request.getAttribute("emailError");
-           String passwordError = (String) request.getAttribute("passwordError");
-           String accountError = (String) request.getAttribute("accountError");
-            String ACCOUNT_ERROR = "ACCOUNT IS ALREADY EXIST!!!";
-            String EMAIL_ERROR = "Email Didn't Match Requirement";
-            String PASSWORD_ERROR = "Password Didn't Match Requirement";
-        %>
-        <div class="container">
-            <h1>Sign Up</h1>
-            <form action="CentralController" method="post" >
-                 <input type="hidden" name="action"  value="checkSignUp">
-                <div class="signup">
-                    <p><input type="text" name="txtemail" required=""  placeholder="Email"> *Must End With '@gmail.com'</p>
-                    <%if(emailError=="err"){%><p style='color:yellow'><%= EMAIL_ERROR %></p><%}%>
-                    <%if(accountError=="err"){%><p style='color:yellow'><%= ACCOUNT_ERROR %></p><%}%>
-                    <p><input type="password" id="txtpassword" name="txtpassword" required="" placeholder="Password"> *Must Be At Least 5 Characters</p>
-                    <%if(passwordError=="err"){%><p style='color:yellow'><%= PASSWORD_ERROR %></p><%}%>
-                    <p><input type="password" id="txtrepassword" name="txtrepassword" required="" placeholder="Re-Password"></p>
-                    <p><input type="submit" name="btnAction" value="Sign Up" onclick="return checkPassword()"></p>
-                     
-                    
-                </div>
-            </form>
+        <%
+            String nameError = (String) request.getAttribute("nameError");
+            String phoneError = (String) request.getAttribute("phoneError");
+            String addressError = (String) request.getAttribute("addressError");
+            String NAME_ERROR = "Name didn't match requirement ->";
+            String PHONE_ERROR = "Phone didn't match requirement ->";
+            String ADDRESS_ERROR = "Address didn't match requirement ->"; 
             
+            %>
+        <div class="container">
+            <h1>Personal Information</h1>
+            <form action="CentralController" method="post" >
+                <% String email = request.getParameter("txtemail"); %>
+               <input type="hidden" name="action"  value="checkSignUp">
+                <div class="information">
+                    <input  type="hidden" name="txtemail"  value="<%= email %>" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px;}">
+                   
+                    <input type="text" name="name" required="" placeholder="Name" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px;}">
+                     <%if(nameError=="err"){%><p style='color:yellow'><%= NAME_ERROR %></p><%}%><p>*Must Be At Least 3 Characters</p>
+                    <input type="date" name="birth" required="" placeholder="Birthdate" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px; border: none;}">
+                    
+                    <input type="text" name="phone" required="" placeholder="Phone" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px;}">
+                     <%if(phoneError=="err"){%><p style='color:yellow'><%= PHONE_ERROR %></p><%}%><p>*Must Be 9 Digits</p>
+                    <input type="text" name="address" required="" placeholder="Address" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px;}">
+                     <%if(addressError=="err"){%><p style='color:yellow'><%= ADDRESS_ERROR %></p><%}%><p>*Must Be At Least 10 Characters</p>
+                
+                </div>
+                <input name="btnAction" type="submit" value="Register">
+            </form>
         </div>
-
     </body>
 </html>
-

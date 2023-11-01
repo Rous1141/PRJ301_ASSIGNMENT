@@ -16,6 +16,16 @@ import javax.servlet.http.HttpServletResponse;
  * @author hendrix
  */
 public class CentralController extends HttpServlet {
+            String SignUp_Page = "/Customer/signupPage.jsp";
+            String Info_SignUp_Page = "/Customer/information.jsp";
+            String Check_Sign_Up = "/Customer/checkSignUp.jsp";
+            String LogIn_Page = "/Components/loginPage.jsp";
+            String Shop_Page = "/Customer/shopPage.jsp";
+            String Admin_Page = "/Admin/adminPage.jsp";
+            String Cart_Page = "/Customer/cartPage.jsp";
+            String History_Page = "/Customer/historyPage.jsp";
+            String Shipper_Page = "/Shipper/shipperPage.jsp";
+            String Error_Page = "/Components/errorPage.jsp";
            
             
     /**
@@ -31,33 +41,45 @@ public class CentralController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String SignIn_Page = "Customer/signupPage.jsp";
-            String LogIn_Page = "/Components/loginPage.jsp";
-            String Shop_Page = "Customer/shopPage.jsp";
-            String Admin_Page = "Admin/adminPage.jsp";
-            String Cart_Page = "Customer/cartPage.jsp";
-            String History_Page = "Customer/historyPage.jsp";
-            String Shipper_Page = "Components/shipperPage.jsp";
-            String Error_Page = "Components/errorPage.jsp";
+
+//            String SignIn_Page = "/Customer/signupPage.jsp";
+//            String LogIn_Page = "/Components/loginPage.jsp";
+//            String Shop_Page = "/Customer/shopPage.jsp";
+//            String Admin_Page = "/Admin/adminPage.jsp";
+//            String Cart_Page = "/Customer/cartPage.jsp";
+//            String History_Page = "/Customer/historyPage.jsp";
+//            String Shipper_Page = "/Components/shipperPage.jsp";
+//            String Error_Page = "/Components/errorPage.jsp";
+
             
-            
-            
+
             /* TODO output your page here. You may use following sample code. */
             String action = request.getParameter("action");
+            String role = (String) request.getAttribute("role");
+
+            
             if(action == null){action="welcome";}
+            if(role != null){
+                action = role; request.removeAttribute("role");
+            }
+
+
+
             switch (action) {
+                
                 case "welcome":{request.getRequestDispatcher(LogIn_Page).forward(request, response);break;}
                 case "shop":{request.getRequestDispatcher(Shop_Page).forward(request, response);break;}
-                case "signin":{request.getRequestDispatcher(SignIn_Page).forward(request, response);break;}
+                case "signup":{request.getRequestDispatcher(SignUp_Page).forward(request, response);break;}
+                case "information":{request.getRequestDispatcher(Info_SignUp_Page).forward(request, response);break;}
+                case "checkSignUp":{request.getRequestDispatcher(Check_Sign_Up).forward(request, response);break;}
                 case "cart":{request.getRequestDispatcher(Cart_Page).forward(request, response);break;}
                 case "history":{request.getRequestDispatcher(History_Page).forward(request, response);break;}
                 case "admin":{request.getRequestDispatcher(Admin_Page).forward(request, response);break;}
                 case "shipper":{request.getRequestDispatcher(Shipper_Page).forward(request, response);break;}
-                case "error":request.getRequestDispatcher(Error_Page).forward(request, response);{break;}
-                    
-                    
+
                 default:
-                    throw new AssertionError();
+                     request.getRequestDispatcher(Error_Page).forward(request, response);{break;}
+
             }
         }
     }
