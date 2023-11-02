@@ -3,6 +3,8 @@
     Created on : Nov 1, 2023, 3:28:00 PM
     Author     : hendrix
 --%>
+<%@page import="DTO.Login"%>
+<%@page import="DTO.Account"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="DTO.Customers"%>
 <%@page import="DAO.CustomerDAO" %>
@@ -14,26 +16,33 @@
         <title>Profile</title>
     </head>
     <body>
-        <h1>My Profile</h1>
+
         <div>
+
             <%
-                
-                Customers cusEmail = (Customers) session.getAttribute("user");
-                ArrayList<Customers> result = CustomerDAO.getCustomersByEmail(cusEmail.getEmail());
-            for ( Customers r : result) {
-             
-            
+                Login l = (Login) session.getAttribute("result");
+                if (l != null) {
+                    String email = l.getEmail();
+                    ArrayList<Customers> customersList = CustomerDAO.getCustomersByEmail(email);
+                    for (Customers customer : customersList) {
             %>
+            <h1>My Profile</h1>
             <div>
-            <p><%= r.getName() %></p>
-            <p>Email: <%= r.getEmail() %></p>
-            <p>Birth Date: <%= r.getBirth_date() %></p>
-            <p>Phone Number: <%= r.getPhone_number() %></p>
-            <p>Address: <%= r.getAddress() %></p>
-            <p>Status: <%= r.getStaus() %></p>
-            <p>Orders: <%= r.getOrders() %></p>
-            <p>Flag: <%= r.getFlag() %></p>
+                
+                <p>Name: <%= customer.getName()%></p>
+                <p>Email: <%= customer.getEmail()%></p>
+                <p>Birth Date: <%= customer.getBirth_date()%></p>
+                <p>Phone Number: <%= customer.getPhone_number()%></p>
+                <p>Address: <%= customer.getAddress()%></p>
+                <p>Status: <%= customer.getStaus()%></p>
+                <p>Orders: <%= customer.getOrders()%></p>
+                <p>Flag: <%= customer.getFlag()%></p>
             </div>
+            <%
+                }
+            } else {
+            %>
+            <p>Not Found.</p>
             <%
                 }
             %>

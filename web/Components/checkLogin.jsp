@@ -20,9 +20,11 @@
     </head>
     <body>
         <%
+            
             String email = request.getParameter("email");
             String pass = request.getParameter("pass");
             Login result = LoginDAO.LogIn(email, pass);
+            session.setAttribute("result", result);
             String message = (String) request.getAttribute("message");
             ArrayList<Customers> user = new ArrayList<>();
 
