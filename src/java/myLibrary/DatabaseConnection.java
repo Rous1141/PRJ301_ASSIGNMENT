@@ -15,8 +15,8 @@ public class DatabaseConnection {
     public static Connection makeConnection() throws Exception{
         Connection cn=null;
 
-        String IP="10.211.55.2";   
-        String instanceName="";
+        String IP="localhost";   
+        String instanceName="Vodka\\SQLEXPRESS";
 
         String port="1433";
         String uid="sa"; 

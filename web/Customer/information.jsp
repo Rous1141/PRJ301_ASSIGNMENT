@@ -133,7 +133,7 @@
                    
                     <input type="text" name="name" required="" placeholder="Name" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px;}">
                      <%if(nameError=="err"){%><p style='color:yellow'><%= NAME_ERROR %></p><%}%><p>*Must Be At Least 3 Characters</p>
-                    <input type="date" name="birth" required="" placeholder="Birthdate" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px; border: none;}">
+                    <input type="text" name="birth" required="" placeholder="Birthdate yyyy-mm-dd" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px; border: none;}">
                     
                     <input type="text" name="phone" required="" placeholder="Phone" style="background: transparent; color: #fff; border-bottom: 2px solid #fff; ::placeholder{color: #fff; font-size: 18px;}">
                      <%if(phoneError=="err"){%><p style='color:yellow'><%= PHONE_ERROR %></p><%}%><p>*Must Be 9 Digits</p>
