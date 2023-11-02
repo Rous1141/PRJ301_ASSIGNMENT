@@ -17,18 +17,22 @@
         <h1>My Profile</h1>
         <div>
             <%
-                ArrayList<Customers> customersList = DAO.CustomerDAO.getAll();
-            for (Customers customer : customersList) {
+                
+                Customers cusEmail = (Customers) session.getAttribute("user");
+                ArrayList<Customers> result = CustomerDAO.getCustomersByEmail(cusEmail.getEmail());
+            for ( Customers r : result) {
+             
+            
             %>
             <div>
-            <p><%= customer.getName() %></p>
-            <p>Email: <%= customer.getEmail() %></p>
-            <p>Birth Date: <%= customer.getBirth_date() %></p>
-            <p>Phone Number: <%= customer.getPhone_number() %></p>
-            <p>Address: <%= customer.getAddress() %></p>
-            <p>Status: <%= customer.getStaus() %></p>
-            <p>Orders: <%= customer.getOrders() %></p>
-            <p>Flag: <%= customer.getFlag() %></p>
+            <p><%= r.getName() %></p>
+            <p>Email: <%= r.getEmail() %></p>
+            <p>Birth Date: <%= r.getBirth_date() %></p>
+            <p>Phone Number: <%= r.getPhone_number() %></p>
+            <p>Address: <%= r.getAddress() %></p>
+            <p>Status: <%= r.getStaus() %></p>
+            <p>Orders: <%= r.getOrders() %></p>
+            <p>Flag: <%= r.getFlag() %></p>
             </div>
             <%
                 }
