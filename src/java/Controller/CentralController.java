@@ -27,7 +27,7 @@ public class CentralController extends HttpServlet {
             String History_Page = "/Customer/historyPage.jsp";
             String Shipper_Page = "/Shipper/shipperPage.jsp";
             String Error_Page = "/Components/errorPage.jsp";
-           
+            String Buy_Page ="/Customer/buy.jsp";
             
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -78,7 +78,7 @@ public class CentralController extends HttpServlet {
                 case "history":{request.getRequestDispatcher(History_Page).forward(request, response);break;}
                 case "admin":{request.getRequestDispatcher(Admin_Page).forward(request, response);break;}
                 case "shipper":{request.getRequestDispatcher(Shipper_Page).forward(request, response);break;}
-
+                case "buy":{request.getRequestDispatcher(Buy_Page).forward(request, response);break;}
                 default:
                      request.getRequestDispatcher(Error_Page).forward(request, response);{break;}
 

@@ -14,19 +14,19 @@
         <title>Cart</title>
     </head>
     <body>
-         <%
+        <%
             HashMap<Flowers, Integer> flowerList = (HashMap<Flowers, Integer>) session.getAttribute("order");
             if (flowerList == null) {
                 out.println("Your Cart Is Currently Empty");
         %>
-         <form id='return' method='post' action='CentralController'>
-         <p>Return To Shop Page <input form="return" type="submit" value="shop" name="action"/></p>
-        
+        <form id='return' method='post' action='CentralController'>
+            <p>Return To Shop Page <input form="return" type="submit" value="shop" name="action"/></p>
+
         </form>
         <%
         } else {
-            int Quantity=0;
-        
+            int Quantity = 0;
+
         %>
         <h1>Your Order</h1>
 
@@ -40,43 +40,55 @@
             </tr>
 
             <%                for (Flowers flower : flowerList.keySet()) {
-                                if(flowerList.get(flower)>flower.getQuantity()){
-                                flowerList.put(flower,flower.getQuantity());}
-                                Quantity += (flower.getFlower_price() * flowerList.get(flower));
+                    if (flowerList.get(flower) > flower.getQuantity()) {
+                        flowerList.put(flower, flower.getQuantity());
+                    }
+                    Quantity += (flower.getFlower_price() * flowerList.get(flower));
             %>
-            
-            
-                <tr>
-                    <td><%= flower.getFlower_name()%> </td>
-                    <td><%= flower.getFlower_price()%></td>
-                    <td>
-                        <form id="<%= flower.getFlower_id()%>" action='updateServlet' method='POST'> 
-                            
-                        <input type="number" name="quantity" value="<%= flowerList.get(flower)%>" min="1" max="<%= flower.getQuantity() %>">
-                        
-                         <input type='hidden' name='ID' value='<%= flower.getFlower_id() %>'>
-                        </form>
-                    </td>
 
-                    <td>
-                        <input form="<%= flower.getFlower_id() %>" type="submit" value="Update" name="Action"/>
-                        <input form="<%= flower.getFlower_id() %>" type="submit" value="Delete" name="Action"/>
-                    </td>
-                   
-                </tr>
-            </form>
 
-            <%
-                }
-            %>
-        </table>
+            <tr>
+                <td><%= flower.getFlower_name()%> </td>
+                <td><%= flower.getFlower_price()%></td>
+                <td>
+                    <form id="<%= flower.getFlower_id()%>" action='updateServlet' method='POST'> 
 
-        <h3>Total Price Charge: <%= Quantity %>$</h3>
-        <form id='return' method='post' action='CentralController'>
-        <input form="return" type="submit" value="shop" name="action"/>
+                        <input type="number" name="quantity" value="<%= flowerList.get(flower)%>" min="1" max="<%= flower.getQuantity()%>">
+
+                        <input type='hidden' name='ID' value='<%= flower.getFlower_id()%>'>
+                    </form>
+                </td>
+
+                <td>
+                    <input form="<%= flower.getFlower_id()%>" type="submit" value="Update" name="Action"/>
+                    <input form="<%= flower.getFlower_id()%>" type="submit" value="Delete" name="Action"/>
+                </td>
+
+            </tr>
         </form>
+
         <%
             }
         %>
-    </body>
+    </table>
+
+    <h3>Total Price Charge: <%= Quantity%>$</h3>
+    
+    
+    <%    session.setAttribute("Total", Quantity);  %>
+    <form id='return' method='post' action='CentralController'>
+        <input form="return" type="submit" value="shop" name="action"/>
+    </form>
+    <form  action='CentralController'>
+        <input  type="submit" value="buy" name="action"/>
+    </form>
+
+    <%
+        }
+    %>
+
+
+
+
+</body>
 </html>

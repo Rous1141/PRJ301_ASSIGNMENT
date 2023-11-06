@@ -32,7 +32,7 @@
                 <%
                     String role = (String) session.getAttribute("role");
                     Login user = (Login) session.getAttribute("user");
-                     if (role == null || user == null) {
+                    if (role == null || user == null) {
                         role = "-1";
                     }
                     if (!role.equalsIgnoreCase("AD")) {
@@ -40,7 +40,7 @@
                         request.getRequestDispatcher("../CentralController").forward(request, response);
                     }
                     Admin result = AdminDAO.getAccount(user.getEmail());
-                    
+
                 %>
                 <div class="nav-wrapper">
                     <a href="#" class="brand-logo" style="margin-left: 2%">Welcome Admin <%= result.getName()%></a>
@@ -121,13 +121,12 @@
                     }
 
                     case "feedback": {
-                %> <%@include file="feedback.jsp" %> <%
-                        break;
+                %> <%@include file="feedback.jsp" %> <%                        break;
                     }
-                     case "createFlower": {
+                    case "createFlower": {
                 %> <%@include file="createFlower.jsp" %> <%                        break;
                     }
-                        case "checkCreateFlower": {
+                    case "checkCreateFlower": {
                 %> <%@include file="checkCreateFlower.jsp" %> <%                        break;
                     }
                     case "flowerupdate": {
@@ -145,11 +144,12 @@
                     case "checkUpdateStatus": {
                 %> <%@include file="checkUpdateStatus.jsp" %> <%                        break;
                     }
-
+                   
                     default: {
                 %> <%@include file="dashboard.jsp" %> <%
                             break;
                         }
+
                     }
 
                 %>
